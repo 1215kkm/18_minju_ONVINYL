@@ -1,21 +1,14 @@
-const slides = document.querySelectorAll('.hero-slide');
-const dots = document.querySelectorAll('.dot');
-let current = 0;
+const paginationButtons = document.querySelectorAll('.hero-pagination button');
 
-function showSlide(index) {
-  slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-  dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-  current = index;
-}
-
-dots.forEach((dot) => {
-  dot.addEventListener('click', () => {
-    const idx = Number(dot.dataset.slide);
-    showSlide(idx);
+paginationButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    paginationButtons.forEach((item) => item.classList.remove('active'));
+    button.classList.add('active');
   });
 });
 
-setInterval(() => {
-  const next = (current + 1) % slides.length;
-  showSlide(next);
-}, 6000);
+document.querySelectorAll('form').forEach((form) => {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+  });
+});
