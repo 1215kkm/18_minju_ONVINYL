@@ -33,7 +33,7 @@ button { cursor: pointer; }
 .logo-wrap { margin: 0; line-height: 0; flex: 0 0 auto; }
 .logo-img { display: block; width: 175px; height: auto; }
 .main-nav { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; gap: clamp(34px, 4vw, 70px); font-size: 14px; font-weight: 700; white-space: nowrap; }
-.main-nav a:hover { color: var(--red); }
+.main-nav a:hover, .main-nav a.active { color: var(--red); }
 .header-icons { display: flex; align-items: center; justify-content: flex-end; gap: 22px; margin-left: auto; }
 .icon-btn { position: relative; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 0; background: transparent; color: var(--text); line-height: 1; }
 .material-symbols-outlined { display: block; font-family: 'Material Symbols Outlined'; font-size: 32px; font-weight: 300; line-height: 1; font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 32; }
@@ -178,14 +178,6 @@ button { cursor: pointer; }
 .footer-bottom p, .footer-bottom a { margin: 0; font-size: 10px; font-weight: 400; }
 .footer-bottom p:last-child { display: flex; gap: 24px; }
 
-.detail-body .site-header { height: 64px; border-bottom: 0; background: #f7f5f0; }
-.detail-body .logo-img { width: 138px; }
-.detail-body .main-nav { gap: 39px; font-size: 12px; }
-.detail-body .header-icons { gap: 19px; }
-.detail-body .icon-btn { width: 28px; height: 28px; }
-.detail-body .material-symbols-outlined { font-size: 28px; }
-.detail-body .bag-icon em { width: 22px; height: 22px; right: -8px; top: -9px; font-size: 11px; }
-
 .product-page { background: #f7f5f0; }
 .breadcrumb { height: 42px; background: #f7f5f0; color: rgba(34, 34, 34, .68); border-top: 1px solid rgba(34, 34, 34, .08); border-bottom: 1px solid rgba(34, 34, 34, .08); }
 .breadcrumb-inner { height: 100%; display: flex; align-items: center; gap: 14px; font-size: 12px; font-weight: 500; }
@@ -279,11 +271,456 @@ button { cursor: pointer; }
 .recommend-prev { left: -55px; }
 .recommend-next { right: -55px; }
 
+.kpop-body .site-header {
+  background: var(--bg);
+  border-bottom-color: rgba(133, 41, 54, .18);
+}
+
+.kpop-body .main-nav a:hover,
+.kpop-body .main-nav a.active {
+  color: #852936;
+}
+
+.kpop-body .bag-icon em {
+  background: #852936;
+  color: #faf7ea;
+}
+
+.kpop-body .site-footer {
+  background: #a8656d;
+  color: #faf7ea;
+  border-top: 0;
+}
+
+.kpop-body .footer-newsletter input {
+  color: #faf7ea;
+  border-color: rgba(250, 247, 234, .82);
+}
+
+.kpop-body .footer-newsletter input::placeholder {
+  color: rgba(250, 247, 234, .72);
+}
+
+.kpop-body .footer-newsletter button {
+  color: #faf7ea;
+  border-color: rgba(250, 247, 234, .82);
+}
+
+.kpop-body .site-footer a:hover {
+  color: #c5d9e2;
+}
+
+.kpop-body .socials a:nth-child(2) svg path:last-child {
+  fill: #a8656d;
+}
+
+.kpop-body .footer-bottom {
+  border-top-color: transparent;
+}
+
+.kpop-page {
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.kpop-hero {
+  --hero-accent: #c5d9e2;
+  --hero-soft: #e1aebc;
+  --hero-deep: #852936;
+  --hero-paper: var(--bg);
+  --hero-title: #852936;
+  --hero-muted: #852936;
+  --hero-wash: rgba(197, 217, 226, .72);
+  --hero-shadow: rgba(197, 217, 226, .95);
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 82px);
+  padding: 44px 0 48px;
+  background:
+    radial-gradient(circle at 82% 46%, var(--hero-wash) 0%, rgba(244, 243, 239, .72) 42%, rgba(244, 243, 239, 0) 68%),
+    linear-gradient(90deg, rgba(244, 243, 239, 1) 0%, rgba(244, 243, 239, .96) 46%, var(--hero-wash) 100%),
+    repeating-linear-gradient(-8deg, rgba(133, 41, 54, .055) 0 1px, transparent 1px 22px);
+  border-bottom: 2px solid var(--hero-deep);
+  transition: background .55s ease, border-color .55s ease;
+}
+
+.kpop-hero.is-pink-version {
+  --hero-accent: #e1aebc;
+  --hero-soft: #c5d9e2;
+  --hero-deep: #852936;
+  --hero-title: #5f6468;
+  --hero-muted: #852936;
+  --hero-wash: rgba(225, 174, 188, .7);
+  --hero-shadow: rgba(225, 174, 188, .76);
+}
+
+.kpop-hero::after {
+  display: none;
+}
+
+.kpop-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(360px, .78fr);
+  gap: 44px;
+  align-items: center;
+}
+
+.kpop-title h2 {
+  margin: 0 0 22px;
+  max-width: 610px;
+  color: var(--hero-title);
+  font-size: clamp(44px, 5.2vw, 82px);
+  line-height: .98;
+  font-weight: 520;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  -webkit-text-stroke: 0 transparent;
+  text-shadow: 3px 4px 0 var(--hero-shadow);
+  transition: color .55s ease, text-shadow .55s ease;
+}
+
+.kpop-eyebrow {
+  margin: 0 0 18px;
+  color: var(--hero-muted);
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 460;
+  letter-spacing: .08em;
+  transition: color .55s ease;
+}
+
+.kpop-summary {
+  max-width: 580px;
+  margin: 0;
+  color: rgba(77, 77, 77, .72);
+  font-size: 15px;
+  line-height: 1.72;
+  font-weight: 320;
+  word-break: keep-all;
+}
+
+.kpop-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.kpop-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 176px;
+  height: 52px;
+  padding: 0 24px;
+  border: 1px solid #852936;
+  border-radius: 4px;
+  background: var(--hero-soft);
+  color: #852936;
+  box-shadow: 4px 4px 0 #852936;
+  font-size: 14px;
+  font-weight: 420;
+}
+
+.kpop-version-tabs {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(92px, 1fr));
+  gap: 8px;
+  margin-top: 6px;
+  padding: 5px;
+  border: 1px solid rgba(133, 41, 54, .34);
+  border-radius: 999px;
+  background: rgba(244, 243, 239, .72);
+}
+
+.kpop-version-tabs button {
+  height: 32px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(133, 41, 54, .72);
+  font-size: 12px;
+  font-weight: 320;
+}
+
+.kpop-version-tabs button.active {
+  background: var(--hero-accent);
+  color: #852936;
+}
+
+.kpop-save {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 1px solid #852936;
+  border-radius: 50%;
+  background: var(--bg);
+  box-shadow: 3px 3px 0 #852936;
+}
+
+.kpop-save .material-symbols-outlined {
+  font-size: 27px;
+  color: #852936;
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 32;
+}
+
+.kpop-sticker-logo {
+  justify-self: end;
+  display: grid;
+  place-items: center;
+  width: min(100%, 390px);
+  aspect-ratio: 1.15 / .72;
+  transform: rotate(-7deg);
+  border: 7px solid var(--hero-accent);
+  border-radius: 46% 54% 40% 60% / 52% 40% 60% 48%;
+  background: var(--hero-deep);
+  box-shadow: 0 0 0 8px var(--bg), 14px 18px 0 rgba(133, 41, 54, .18);
+  transition: border-color .55s ease, background-color .55s ease;
+}
+
+.kpop-sticker-logo span {
+  color: var(--bg);
+  font-size: clamp(58px, 6.6vw, 96px);
+  line-height: .8;
+  font-weight: 520;
+  letter-spacing: 0;
+  transform: skew(-10deg) rotate(1deg);
+}
+
+.album-detail-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 36px;
+  align-items: start;
+  padding-top: 54px;
+  padding-bottom: 86px;
+}
+
+.album-visual {
+  position: relative;
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid rgba(133, 41, 54, .5);
+  border-radius: 6px;
+  background: rgba(244, 243, 239, .55);
+  box-shadow: 0 16px 42px rgba(133, 41, 54, .13);
+}
+
+.album-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 3px;
+  image-rendering: auto;
+  transform: translateZ(0);
+}
+
+.album-buy-panel {
+  position: sticky;
+  top: 96px;
+  min-width: 0;
+  padding: 30px 28px 28px;
+  border: 1px solid rgba(133, 41, 54, .5);
+  border-radius: 3px;
+  background:
+    linear-gradient(180deg, rgba(244, 243, 239, .98), rgba(244, 243, 239, .92)),
+    linear-gradient(135deg, rgba(197, 217, 226, .2), rgba(225, 174, 188, .18));
+  box-shadow: 0 14px 34px rgba(133, 41, 54, .12);
+}
+
+.panel-kicker {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  margin: 0 0 16px;
+  padding: 0 12px;
+  border: 1px solid rgba(133, 41, 54, .42);
+  border-radius: 999px;
+  background: rgba(197, 217, 226, .42);
+  color: #852936;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.album-buy-panel h3 {
+  margin: 0 0 16px;
+  max-width: 330px;
+  color: #222;
+  font-size: 24px;
+  line-height: 1.18;
+  font-weight: 520;
+}
+
+.panel-price {
+  margin: 0 0 24px;
+  color: #852936;
+  font-size: 22px;
+  font-weight: 460;
+}
+
+.kit-meta {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 22px;
+  padding: 18px 0 16px;
+  border-top: 1px solid rgba(133, 41, 54, .24);
+  border-bottom: 1px solid rgba(133, 41, 54, .24);
+}
+
+.kit-meta div {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 14px;
+  align-items: baseline;
+}
+
+.kit-meta dt {
+  color: rgba(77, 77, 77, .62);
+  font-size: 11px;
+  font-weight: 520;
+}
+
+.kit-meta dd {
+  margin: 0;
+  color: #852936;
+  font-size: 13px;
+  font-weight: 380;
+}
+
+.option-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: 14px;
+  padding: 5px;
+  border: 1px solid rgba(133, 41, 54, .22);
+  border-radius: 999px;
+  background: rgba(244, 243, 239, .72);
+}
+
+.option-row button {
+  height: 36px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(34, 34, 34, .74);
+  font-size: 11px;
+  font-weight: 380;
+  transition: background-color .18s ease, color .18s ease, transform .18s ease;
+}
+
+.option-row button.active {
+  background: #852936;
+  color: #faf7ea;
+}
+
+.option-row button:active,
+.kpop-purchase button:active {
+  transform: translateY(1px);
+}
+
+.kpop-purchase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.kpop-purchase button {
+  height: 48px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background-color .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.kpop-purchase .cart-btn {
+  border-color: #852936;
+  background: #852936;
+  color: #faf7ea;
+  box-shadow: 0 8px 18px rgba(133, 41, 54, .16);
+}
+
+.kpop-purchase .buy-btn {
+  border-color: #852936;
+  background: transparent;
+  color: #852936;
+}
+
+.kpop-purchase button.is-feedback {
+  background: #c5d9e2;
+  border-color: #c5d9e2;
+  color: #852936;
+}
+
+.panel-note {
+  margin: 0;
+  color: rgba(77, 77, 77, .68);
+  font-size: 12px;
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
+.kpop-track-band {
+  padding: 64px 0 72px;
+  background: #852936;
+  color: #faf7ea;
+}
+
+.kpop-track-grid {
+  display: grid;
+  grid-template-columns: .78fr 1fr;
+  gap: 70px;
+  align-items: start;
+}
+
+.kpop-track-grid .kpop-eyebrow {
+  color: #e1aebc;
+}
+
+.kpop-track-grid h2 {
+  max-width: 520px;
+  margin: 0;
+  font-size: clamp(34px, 4.2vw, 72px);
+  line-height: .98;
+  font-weight: 430;
+}
+
+.kpop-track-grid ol {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(250, 247, 234, .32);
+}
+
+.kpop-track-grid li {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(250, 247, 234, .32);
+  font-size: 18px;
+  font-weight: 420;
+}
+
+.kpop-track-grid time {
+  color: #c5d9e2;
+  font-weight: 430;
+}
+
 @media (max-width: 1180px) {
   .inner { width: min(var(--max), calc(100% - 44px)); }
   .logo-img { width: 156px; }
   .main-nav { gap: 24px; font-size: 13px; }
-  .detail-body .main-nav { gap: 22px; }
   .detail-body .product-hero { grid-template-columns: 1fr; gap: 32px; }
   .detail-body .product-info { padding-top: 0; }
   .detail-body .main-product-blank { height: 440px; }
@@ -291,6 +728,9 @@ button { cursor: pointer; }
   .detail-body .recommend-row { gap: 28px; }
   .detail-body .recommend-prev { left: 0; }
   .detail-body .recommend-next { right: 0; }
+  .kpop-hero-grid, .album-detail-board { grid-template-columns: 1fr; }
+  .kpop-sticker-logo { justify-self: start; width: min(100%, 430px); }
+  .album-buy-panel { position: static; }
   .sellers-layout { grid-template-columns: 1fr; }
   .edition-card { height: 360px; }
   .edition-card strong { margin-bottom: 80px; }
@@ -309,9 +749,6 @@ button { cursor: pointer; }
   .site-header { height: auto; }
   .header-inner { min-height: 92px; flex-wrap: wrap; padding: 18px 0; }
   .main-nav { position: static; order: 3; transform: none; width: 100%; overflow-x: auto; justify-content: flex-start; }
-  .detail-body .site-header { height: auto; }
-  .detail-body .header-inner { min-height: 76px; }
-  .detail-body .main-nav { gap: 24px; font-size: 12px; }
   .detail-body .breadcrumb { height: auto; }
   .detail-body .breadcrumb-inner { min-height: 42px; gap: 9px; overflow-x: auto; font-size: 11px; white-space: nowrap; }
   .detail-body .product-hero { padding-top: 24px; }
@@ -330,6 +767,12 @@ button { cursor: pointer; }
   .detail-body .track-list { grid-template-columns: 1fr; gap: 42px; padding: 38px 12px; }
   .detail-body .review-meta, .detail-body .review-help { flex-wrap: wrap; }
   .detail-body .recommend-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kpop-hero { display: block; min-height: auto; padding: 42px 0 48px; }
+  .kpop-title h2 { text-shadow: 2px 3px 0 var(--hero-shadow); }
+  .kpop-summary { font-size: 15px; }
+  .album-detail-board { padding-top: 36px; gap: 28px; }
+  .album-visual, .album-buy-panel { box-shadow: 0 12px 30px rgba(133, 41, 54, .12); }
+  .kpop-track-grid { grid-template-columns: 1fr; gap: 34px; }
   .hero { height: 680px; }
   .hero-inner { grid-template-columns: 1fr; align-content: center; }
   .play-video { display: none; }
@@ -364,7 +807,6 @@ button { cursor: pointer; }
   .inner { width: calc(100% - 32px); }
   .logo-img { width: 136px; }
   .footer-brand img { width: 92px; }
-  .detail-body .logo-img { width: 128px; }
   .detail-body .main-product-blank { height: 280px; }
   .detail-body .main-product-blank img { max-width: 82%; max-height: 82%; }
   .detail-body .gallery-arrow { top: 178px; width: 38px; height: 38px; }
@@ -373,6 +815,14 @@ button { cursor: pointer; }
   .detail-body .review-head { align-items: flex-start; flex-direction: column; }
   .detail-body .review-card { padding: 30px 22px; }
   .detail-body .recommend-row { grid-template-columns: 1fr; }
+  .kpop-title h2 { font-size: 42px; line-height: 1; }
+  .kpop-actions { align-items: flex-start; flex-direction: column; }
+  .kpop-primary { width: calc(100% - 7px); }
+  .kpop-sticker-logo { width: min(100%, 260px); border-width: 6px; box-shadow: 0 0 0 5px var(--bg), 8px 10px 0 rgba(133, 41, 54, .18); }
+  .kpop-sticker-logo span { font-size: 56px; }
+  .album-visual { padding: 10px; }
+  .album-buy-panel h3 { font-size: 23px; }
+  .kpop-track-grid li { font-size: 15px; }
   .header-icons { gap: 14px; }
   .icon-btn { width: 34px; height: 34px; }
   .material-symbols-outlined { font-size: 34px; }
