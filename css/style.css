@@ -272,22 +272,114 @@ button { cursor: pointer; }
 .recommend-next { right: -55px; }
 
 .kpop-body .site-header {
-  background: var(--bg);
-  border-bottom-color: rgba(133, 41, 54, .18);
+  background: #2b2524;
+  border-bottom-color: #e9aeb4;
+  transition: background-color .55s ease, border-color .55s ease;
+}
+
+.kpop-body.is-brown-version .site-header {
+  background: #f1cec8;
+  border-bottom-color: #4b3129;
+}
+
+.kpop-body .logo-img {
+  filter: invert(1) brightness(1.9) saturate(.5);
+  transition: filter .55s ease, opacity .55s ease;
+}
+
+.kpop-body.is-brown-version .logo-img {
+  filter: none;
+}
+
+.kpop-body .main-nav {
+  gap: clamp(20px, 2.4vw, 42px);
+}
+
+.kpop-body .main-nav a {
+  color: rgba(248, 232, 223, .72);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: .02em;
+  transition: color .35s ease, font-size .18s ease, transform .18s ease;
 }
 
 .kpop-body .main-nav a:hover,
 .kpop-body .main-nav a.active {
-  color: #852936;
+  color: #e9aeb4;
+}
+
+.kpop-body.is-brown-version .main-nav a {
+  color: rgba(75, 49, 41, .66);
+}
+
+.kpop-body.is-brown-version .main-nav a:hover,
+.kpop-body.is-brown-version .main-nav a.active {
+  color: #4b3129;
+}
+
+.kpop-body .main-nav a.active {
+  font-size: clamp(24px, 2.1vw, 34px);
+  font-weight: 800;
+  letter-spacing: 0;
+  transform: translateY(-1px);
+}
+
+.kpop-body .icon-btn {
+  color: #f8e8df;
+  transition: color .55s ease;
+}
+
+.kpop-body.is-brown-version .icon-btn {
+  color: #4b3129;
 }
 
 .kpop-body .bag-icon em {
-  background: #852936;
-  color: #faf7ea;
+  background: #e9aeb4;
+  color: #2b2524;
+  transition: background-color .55s ease, color .55s ease;
+}
+
+.kpop-body.is-brown-version .bag-icon em {
+  background: #4b3129;
+  color: #f8e8df;
+}
+
+.kpop-body.is-past-kpop-hero .site-header,
+.kpop-body.is-past-kpop-hero.is-brown-version .site-header {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+.kpop-body.is-past-kpop-hero .logo-img,
+.kpop-body.is-past-kpop-hero.is-brown-version .logo-img {
+  filter: none;
+}
+
+.kpop-body.is-past-kpop-hero .main-nav a,
+.kpop-body.is-past-kpop-hero.is-brown-version .main-nav a {
+  color: rgba(43, 37, 36, .52);
+}
+
+.kpop-body.is-past-kpop-hero .main-nav a:hover,
+.kpop-body.is-past-kpop-hero .main-nav a.active,
+.kpop-body.is-past-kpop-hero.is-brown-version .main-nav a:hover,
+.kpop-body.is-past-kpop-hero.is-brown-version .main-nav a.active {
+  color: #2b2524;
+}
+
+.kpop-body.is-past-kpop-hero .icon-btn,
+.kpop-body.is-past-kpop-hero.is-brown-version .icon-btn {
+  color: #2b2524;
+}
+
+.kpop-body.is-past-kpop-hero .bag-icon em,
+.kpop-body.is-past-kpop-hero.is-brown-version .bag-icon em {
+  background: #2b2524;
+  color: #f8e8df;
 }
 
 .kpop-body .site-footer {
-  background: #a8656d;
+  background: #3e2723;
   color: #faf7ea;
   border-top: 0;
 }
@@ -307,11 +399,11 @@ button { cursor: pointer; }
 }
 
 .kpop-body .site-footer a:hover {
-  color: #c5d9e2;
+  color: #f4c9d6;
 }
 
 .kpop-body .socials a:nth-child(2) svg path:last-child {
-  fill: #a8656d;
+  fill: #3e2723;
 }
 
 .kpop-body .footer-bottom {
@@ -320,39 +412,35 @@ button { cursor: pointer; }
 
 .kpop-page {
   overflow: hidden;
-  background: var(--bg);
+  background: #f1cec8;
 }
 
 .kpop-hero {
-  --hero-accent: #c5d9e2;
-  --hero-soft: #e1aebc;
-  --hero-deep: #852936;
-  --hero-paper: var(--bg);
-  --hero-title: #852936;
-  --hero-muted: #852936;
-  --hero-wash: rgba(197, 217, 226, .72);
-  --hero-shadow: rgba(197, 217, 226, .95);
+  --hero-accent: #e9aeb4;
+  --hero-soft: #f8e8df;
+  --hero-deep: #2b2524;
+  --hero-paper: #f1cec8;
+  --hero-title: #f5c3c8;
+  --hero-muted: #f3bbb8;
+  --hero-shadow: rgba(43, 37, 36, .72);
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   min-height: calc(100vh - 82px);
-  padding: 44px 0 48px;
-  background:
-    radial-gradient(circle at 82% 46%, var(--hero-wash) 0%, rgba(244, 243, 239, .72) 42%, rgba(244, 243, 239, 0) 68%),
-    linear-gradient(90deg, rgba(244, 243, 239, 1) 0%, rgba(244, 243, 239, .96) 46%, var(--hero-wash) 100%),
-    repeating-linear-gradient(-8deg, rgba(133, 41, 54, .055) 0 1px, transparent 1px 22px);
-  border-bottom: 2px solid var(--hero-deep);
+  padding: clamp(72px, 8.2vh, 112px) 0 52px;
+  background: #2b2524;
+  border-bottom: 1px solid #e9aeb4;
   transition: background .55s ease, border-color .55s ease;
 }
 
-.kpop-hero.is-pink-version {
-  --hero-accent: #e1aebc;
-  --hero-soft: #c5d9e2;
-  --hero-deep: #852936;
-  --hero-title: #5f6468;
-  --hero-muted: #852936;
-  --hero-wash: rgba(225, 174, 188, .7);
-  --hero-shadow: rgba(225, 174, 188, .76);
+.kpop-hero.is-brown-version {
+  --hero-accent: #4b3129;
+  --hero-soft: #2b2524;
+  --hero-title: #4b3129;
+  --hero-muted: #4b3129;
+  --hero-shadow: rgba(233, 174, 180, .7);
+  background: #f1cec8;
+  border-bottom-color: #4b3129;
 }
 
 .kpop-hero::after {
@@ -363,23 +451,41 @@ button { cursor: pointer; }
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, .82fr) minmax(360px, .78fr);
-  gap: 44px;
-  align-items: center;
+  grid-template-columns: minmax(520px, .82fr) minmax(500px, 1fr);
+  gap: clamp(54px, 6vw, 104px);
+  align-items: start;
 }
 
 .kpop-title h2 {
-  margin: 0 0 22px;
-  max-width: 610px;
+  margin: 0 0 24px;
+  max-width: 760px;
   color: var(--hero-title);
-  font-size: clamp(44px, 5.2vw, 82px);
-  line-height: .98;
+  font-size: clamp(58px, 5.9vw, 108px);
+  line-height: .94;
   font-weight: 520;
   letter-spacing: 0;
   text-transform: uppercase;
   -webkit-text-stroke: 0 transparent;
   text-shadow: 3px 4px 0 var(--hero-shadow);
   transition: color .55s ease, text-shadow .55s ease;
+}
+
+.kpop-title,
+.kpop-kit-card img {
+  transition: opacity .48s ease, transform .62s cubic-bezier(.22, .61, .36, 1);
+}
+
+.kpop-hero.is-switching .kpop-title,
+.kpop-hero.is-switching .kpop-kit-card img {
+  opacity: 0;
+}
+
+.kpop-hero.is-switching .kpop-kit-card-main img {
+  transform: translateY(8px) scale(.99);
+}
+
+.kpop-hero.is-switching .kpop-kit-card-goods img {
+  transform: translateY(10px) scale(.99);
 }
 
 .kpop-eyebrow {
@@ -393,13 +499,48 @@ button { cursor: pointer; }
 }
 
 .kpop-summary {
-  max-width: 580px;
+  max-width: 640px;
   margin: 0;
-  color: rgba(77, 77, 77, .72);
+  color: #f8e8df;
   font-size: 15px;
   line-height: 1.72;
   font-weight: 320;
   word-break: keep-all;
+  transition: color .55s ease;
+}
+
+.kpop-hero.is-brown-version .kpop-summary {
+  color: #4b3129;
+}
+
+.kpop-hero.is-brown-version .kpop-primary {
+  border-color: #4b3129;
+  background: #4b3129;
+  color: #f8e8df;
+  box-shadow: 4px 4px 0 #e9aeb4;
+}
+
+.kpop-hero.is-brown-version .kpop-version-tabs {
+  border-color: #4b3129;
+  background: #f8e8df;
+}
+
+.kpop-hero.is-brown-version .kpop-version-tabs button {
+  color: #4b3129;
+}
+
+.kpop-hero.is-brown-version .kpop-version-tabs button.active {
+  color: #f8e8df;
+}
+
+.kpop-hero.is-brown-version .kpop-save {
+  border-color: #4b3129;
+  background: #f8e8df;
+  box-shadow: 3px 3px 0 #4b3129;
+}
+
+.kpop-hero.is-brown-version .kpop-save .material-symbols-outlined {
+  color: #4b3129;
 }
 
 .kpop-actions {
@@ -417,13 +558,14 @@ button { cursor: pointer; }
   min-width: 176px;
   height: 52px;
   padding: 0 24px;
-  border: 1px solid #852936;
+  border: 1px solid #2b2524;
   border-radius: 4px;
-  background: var(--hero-soft);
-  color: #852936;
-  box-shadow: 4px 4px 0 #852936;
+  background: #e9aeb4;
+  color: #2b2524;
+  box-shadow: 4px 4px 0 #f8e8df;
   font-size: 14px;
   font-weight: 420;
+  transition: background-color .55s ease, border-color .55s ease, color .55s ease, box-shadow .55s ease;
 }
 
 .kpop-version-tabs {
@@ -432,25 +574,45 @@ button { cursor: pointer; }
   gap: 8px;
   margin-top: 6px;
   padding: 5px;
-  border: 1px solid rgba(133, 41, 54, .34);
+  border: 1px solid rgba(233, 174, 180, .56);
   border-radius: 999px;
-  background: rgba(244, 243, 239, .72);
+  background: #2b2524;
+  transition: background-color .55s ease, border-color .55s ease;
 }
 
 .kpop-version-tabs button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
   height: 32px;
   padding: 0 14px;
   border: 0;
   border-radius: 999px;
   background: transparent;
-  color: rgba(133, 41, 54, .72);
+  color: rgba(248, 232, 223, .76);
   font-size: 12px;
   font-weight: 320;
+  transition: background-color .35s ease, color .35s ease;
+}
+
+.kpop-version-tabs button::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: #e9aeb4;
+}
+
+.kpop-version-tabs button[data-kpop-version='brown']::before {
+  background: #4b3129;
 }
 
 .kpop-version-tabs button.active {
   background: var(--hero-accent);
-  color: #852936;
+  color: #2b2524;
 }
 
 .kpop-save {
@@ -459,39 +621,97 @@ button { cursor: pointer; }
   width: 52px;
   height: 52px;
   padding: 0;
-  border: 1px solid #852936;
+  border: 1px solid #e9aeb4;
   border-radius: 50%;
-  background: var(--bg);
-  box-shadow: 3px 3px 0 #852936;
+  background: #2b2524;
+  box-shadow: 3px 3px 0 #f8e8df;
+  transition: background-color .55s ease, border-color .55s ease, box-shadow .55s ease;
 }
 
 .kpop-save .material-symbols-outlined {
   font-size: 27px;
-  color: #852936;
+  color: #e9aeb4;
+  transition: color .55s ease;
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 32;
 }
 
-.kpop-sticker-logo {
-  justify-self: end;
-  display: grid;
-  place-items: center;
-  width: min(100%, 390px);
-  aspect-ratio: 1.15 / .72;
-  transform: rotate(-7deg);
-  border: 7px solid var(--hero-accent);
-  border-radius: 46% 54% 40% 60% / 52% 40% 60% 48%;
-  background: var(--hero-deep);
-  box-shadow: 0 0 0 8px var(--bg), 14px 18px 0 rgba(133, 41, 54, .18);
-  transition: border-color .55s ease, background-color .55s ease;
+.kpop-kit-collage {
+  position: relative;
+  justify-self: stretch;
+  min-height: clamp(600px, 46vw, 700px);
+  margin-top: -18px;
+  transform: translateX(-104px);
 }
 
-.kpop-sticker-logo span {
-  color: var(--bg);
-  font-size: clamp(58px, 6.6vw, 96px);
-  line-height: .8;
-  font-weight: 520;
-  letter-spacing: 0;
-  transform: skew(-10deg) rotate(1deg);
+.kpop-kit-collage::before {
+  display: none;
+}
+
+.kpop-kit-card {
+  position: absolute;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  filter: drop-shadow(0 26px 28px rgba(0, 0, 0, .28));
+  box-shadow: none;
+}
+
+.kpop-kit-card-main {
+  right: 0;
+  top: 3%;
+  z-index: 1;
+  width: min(78%, 720px);
+  padding: 0;
+  transform: rotate(-4deg);
+}
+
+.kpop-kit-card-main img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center center;
+  border-radius: 0;
+}
+
+.kpop-kit-card-photo {
+  left: 0;
+  top: 28%;
+  z-index: 2;
+  width: min(50%, 410px);
+  aspect-ratio: 1536 / 1024;
+  padding: 0;
+  color: #f8e8df;
+  background: transparent;
+  transform: rotate(-7deg);
+  box-shadow: 0 24px 52px rgba(0, 0, 0, .46), 0 0 28px rgba(248, 232, 223, .14);
+}
+
+.kpop-kit-card-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  border-radius: 0;
+}
+
+.kpop-kit-card-goods {
+  right: -2%;
+  top: 46%;
+  z-index: 3;
+  overflow: visible;
+  width: min(47%, 410px);
+  transform: rotate(6deg);
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, .34));
+  box-shadow: none;
+}
+
+.kpop-kit-card-goods img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .album-detail-board {
@@ -499,25 +719,25 @@ button { cursor: pointer; }
   grid-template-columns: minmax(0, 1fr) 360px;
   gap: 36px;
   align-items: start;
-  padding-top: 54px;
+  padding-top: 64px;
   padding-bottom: 86px;
 }
 
 .album-visual {
   position: relative;
   min-width: 0;
-  padding: 18px;
-  border: 1px solid rgba(133, 41, 54, .5);
-  border-radius: 6px;
-  background: rgba(244, 243, 239, .55);
-  box-shadow: 0 16px 42px rgba(133, 41, 54, .13);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .album-visual img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 3px;
+  border-radius: 0;
   image-rendering: auto;
   transform: translateZ(0);
 }
@@ -527,12 +747,10 @@ button { cursor: pointer; }
   top: 96px;
   min-width: 0;
   padding: 30px 28px 28px;
-  border: 1px solid rgba(133, 41, 54, .5);
+  border: 1px solid rgba(43, 37, 36, .2);
   border-radius: 3px;
-  background:
-    linear-gradient(180deg, rgba(244, 243, 239, .98), rgba(244, 243, 239, .92)),
-    linear-gradient(135deg, rgba(197, 217, 226, .2), rgba(225, 174, 188, .18));
-  box-shadow: 0 14px 34px rgba(133, 41, 54, .12);
+  background: #f8e8df;
+  box-shadow: 0 14px 34px rgba(43, 37, 36, .14);
 }
 
 .panel-kicker {
@@ -541,10 +759,10 @@ button { cursor: pointer; }
   height: 26px;
   margin: 0 0 16px;
   padding: 0 12px;
-  border: 1px solid rgba(133, 41, 54, .42);
+  border: 1px solid rgba(43, 37, 36, .28);
   border-radius: 999px;
-  background: rgba(197, 217, 226, .42);
-  color: #852936;
+  background: #e9aeb4;
+  color: #2b2524;
   font-size: 11px;
   font-weight: 400;
 }
@@ -552,7 +770,7 @@ button { cursor: pointer; }
 .album-buy-panel h3 {
   margin: 0 0 16px;
   max-width: 330px;
-  color: #222;
+  color: #2b2524;
   font-size: 24px;
   line-height: 1.18;
   font-weight: 520;
@@ -560,7 +778,7 @@ button { cursor: pointer; }
 
 .panel-price {
   margin: 0 0 24px;
-  color: #852936;
+  color: #8d5558;
   font-size: 22px;
   font-weight: 460;
 }
@@ -570,8 +788,8 @@ button { cursor: pointer; }
   gap: 10px;
   margin: 0 0 22px;
   padding: 18px 0 16px;
-  border-top: 1px solid rgba(133, 41, 54, .24);
-  border-bottom: 1px solid rgba(133, 41, 54, .24);
+  border-top: 1px solid rgba(43, 37, 36, .18);
+  border-bottom: 1px solid rgba(43, 37, 36, .18);
 }
 
 .kit-meta div {
@@ -582,14 +800,14 @@ button { cursor: pointer; }
 }
 
 .kit-meta dt {
-  color: rgba(77, 77, 77, .62);
+  color: rgba(43, 37, 36, .56);
   font-size: 11px;
   font-weight: 520;
 }
 
 .kit-meta dd {
   margin: 0;
-  color: #852936;
+  color: #2b2524;
   font-size: 13px;
   font-weight: 380;
 }
@@ -600,9 +818,9 @@ button { cursor: pointer; }
   gap: 6px;
   margin-bottom: 14px;
   padding: 5px;
-  border: 1px solid rgba(133, 41, 54, .22);
+  border: 1px solid rgba(43, 37, 36, .16);
   border-radius: 999px;
-  background: rgba(244, 243, 239, .72);
+  background: #f1cec8;
 }
 
 .option-row button {
@@ -610,15 +828,15 @@ button { cursor: pointer; }
   border: 0;
   border-radius: 999px;
   background: transparent;
-  color: rgba(34, 34, 34, .74);
+  color: rgba(43, 37, 36, .72);
   font-size: 11px;
   font-weight: 380;
   transition: background-color .18s ease, color .18s ease, transform .18s ease;
 }
 
 .option-row button.active {
-  background: #852936;
-  color: #faf7ea;
+  background: #2b2524;
+  color: #f8e8df;
 }
 
 .option-row button:active,
@@ -642,36 +860,83 @@ button { cursor: pointer; }
 }
 
 .kpop-purchase .cart-btn {
-  border-color: #852936;
-  background: #852936;
-  color: #faf7ea;
-  box-shadow: 0 8px 18px rgba(133, 41, 54, .16);
+  border-color: #2b2524;
+  background: #2b2524;
+  color: #f8e8df;
+  box-shadow: 0 8px 18px rgba(43, 37, 36, .18);
 }
 
 .kpop-purchase .buy-btn {
-  border-color: #852936;
+  border-color: #2b2524;
   background: transparent;
-  color: #852936;
+  color: #2b2524;
 }
 
 .kpop-purchase button.is-feedback {
-  background: #c5d9e2;
-  border-color: #c5d9e2;
-  color: #852936;
+  background: #e9aeb4;
+  border-color: #e9aeb4;
+  color: #2b2524;
 }
 
 .panel-note {
   margin: 0;
-  color: rgba(77, 77, 77, .68);
+  color: rgba(43, 37, 36, .62);
   font-size: 12px;
   line-height: 1.55;
   word-break: keep-all;
 }
 
+.kpop-goods-feature {
+  display: grid;
+  grid-template-columns: minmax(300px, .82fr) minmax(320px, .78fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 82px;
+  color: #2b2524;
+}
+
+.goods-copy h2 {
+  max-width: 520px;
+  margin: 0 0 18px;
+  font-size: clamp(34px, 4vw, 66px);
+  line-height: .98;
+  font-weight: 480;
+}
+
+.goods-copy p:last-child {
+  max-width: 450px;
+  margin: 0;
+  color: rgba(43, 37, 36, .66);
+  font-size: 15px;
+  line-height: 1.72;
+  font-weight: 320;
+  word-break: keep-all;
+}
+
+.goods-visual {
+  justify-self: center;
+  width: min(74%, 520px);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  filter: drop-shadow(0 20px 24px rgba(43, 37, 36, .18));
+  box-shadow: none;
+}
+
+.goods-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+}
+
 .kpop-track-band {
   padding: 64px 0 72px;
-  background: #852936;
-  color: #faf7ea;
+  background: #2b2524;
+  color: #f8e8df;
 }
 
 .kpop-track-grid {
@@ -682,7 +947,7 @@ button { cursor: pointer; }
 }
 
 .kpop-track-grid .kpop-eyebrow {
-  color: #e1aebc;
+  color: #e9aeb4;
 }
 
 .kpop-track-grid h2 {
@@ -699,7 +964,7 @@ button { cursor: pointer; }
   margin: 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid rgba(250, 247, 234, .32);
+  border-top: 1px solid rgba(248, 232, 223, .28);
 }
 
 .kpop-track-grid li {
@@ -707,13 +972,13 @@ button { cursor: pointer; }
   justify-content: space-between;
   gap: 18px;
   padding: 20px 0;
-  border-bottom: 1px solid rgba(250, 247, 234, .32);
+  border-bottom: 1px solid rgba(248, 232, 223, .28);
   font-size: 18px;
   font-weight: 420;
 }
 
 .kpop-track-grid time {
-  color: #c5d9e2;
+  color: #e9aeb4;
   font-weight: 430;
 }
 
@@ -728,8 +993,11 @@ button { cursor: pointer; }
   .detail-body .recommend-row { gap: 28px; }
   .detail-body .recommend-prev { left: 0; }
   .detail-body .recommend-next { right: 0; }
-  .kpop-hero-grid, .album-detail-board { grid-template-columns: 1fr; }
-  .kpop-sticker-logo { justify-self: start; width: min(100%, 430px); }
+  .kpop-hero-grid, .album-detail-board, .kpop-goods-feature { grid-template-columns: 1fr; }
+  .kpop-kit-collage { justify-self: stretch; min-height: 560px; margin-top: 8px; transform: none; }
+  .kpop-kit-card-main { right: 15%; top: 2%; width: min(68%, 560px); }
+  .kpop-kit-card-photo { left: 4%; top: 26%; width: min(48%, 360px); }
+  .kpop-kit-card-goods { right: 8%; top: 45%; width: min(42%, 330px); }
   .album-buy-panel { position: static; }
   .sellers-layout { grid-template-columns: 1fr; }
   .edition-card { height: 360px; }
@@ -768,10 +1036,17 @@ button { cursor: pointer; }
   .detail-body .review-meta, .detail-body .review-help { flex-wrap: wrap; }
   .detail-body .recommend-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .kpop-hero { display: block; min-height: auto; padding: 42px 0 48px; }
+  .kpop-title { min-width: 0; }
   .kpop-title h2 { text-shadow: 2px 3px 0 var(--hero-shadow); }
-  .kpop-summary { font-size: 15px; }
+  .kpop-summary { max-width: 100%; font-size: 15px; }
+  .kpop-kit-collage { min-height: 390px; margin-top: 18px; transform: none; }
+  .kpop-kit-card-main { right: 12%; top: 0; width: min(72%, 360px); padding: 0; }
+  .kpop-kit-card-photo { left: 0; top: 29%; width: min(58%, 290px); padding: 0; }
+  .kpop-kit-card-goods { right: 0; top: 44%; width: min(48%, 230px); }
   .album-detail-board { padding-top: 36px; gap: 28px; }
-  .album-visual, .album-buy-panel { box-shadow: 0 12px 30px rgba(133, 41, 54, .12); }
+  .album-buy-panel, .goods-visual { box-shadow: 0 12px 30px rgba(0, 0, 0, .16); }
+  .album-visual { box-shadow: none; }
+  .goods-visual { width: min(68%, 420px); box-shadow: none; }
   .kpop-track-grid { grid-template-columns: 1fr; gap: 34px; }
   .hero { height: 680px; }
   .hero-inner { grid-template-columns: 1fr; align-content: center; }
@@ -815,12 +1090,16 @@ button { cursor: pointer; }
   .detail-body .review-head { align-items: flex-start; flex-direction: column; }
   .detail-body .review-card { padding: 30px 22px; }
   .detail-body .recommend-row { grid-template-columns: 1fr; }
-  .kpop-title h2 { font-size: 42px; line-height: 1; }
+  .kpop-title h2 { font-size: 35px; line-height: 1; }
+  .kpop-summary { max-width: 350px; font-size: 14px; line-height: 1.68; word-break: keep-all; overflow-wrap: anywhere; }
   .kpop-actions { align-items: flex-start; flex-direction: column; }
   .kpop-primary { width: calc(100% - 7px); }
-  .kpop-sticker-logo { width: min(100%, 260px); border-width: 6px; box-shadow: 0 0 0 5px var(--bg), 8px 10px 0 rgba(133, 41, 54, .18); }
-  .kpop-sticker-logo span { font-size: 56px; }
-  .album-visual { padding: 10px; }
+  .kpop-kit-collage { min-height: 300px; margin-top: 8px; }
+  .kpop-kit-card-main { right: 10%; top: 0; width: min(72%, 260px); }
+  .kpop-kit-card-photo { left: 0; top: 28%; width: min(60%, 232px); padding: 0; }
+  .kpop-kit-card-goods { right: 0; top: 46%; width: min(48%, 180px); }
+  .album-visual { padding: 0; }
+  .goods-visual { width: min(82%, 300px); }
   .album-buy-panel h3 { font-size: 23px; }
   .kpop-track-grid li { font-size: 15px; }
   .header-icons { gap: 14px; }

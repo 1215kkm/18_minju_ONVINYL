@@ -34,35 +34,40 @@
         <div class="inner kpop-hero-grid">
           <div class="kpop-title">
             <p class="kpop-eyebrow">K-POP EXCLUSIVE</p>
-            <h2>DAYDREAM CLUB<br />2ND MINI KIT</h2>
-            <p class="kpop-summary">소프트한 컬러와 스티커 감성을 담은 데이드림 클럽의 두 가지 버전 앨범 키트입니다. 멤버별 포토카드와 스티커북, 폴라로이드 스트립을 한 화면에서 차분하게 살펴보세요.</p>
+            <h2 id="kpopVersionTitle">DAYDREAM CLUB<br />BLUSH PACKAGE</h2>
+            <p id="kpopVersionSummary" class="kpop-summary">블러시 톤의 아웃박스와 스프링 포토북, 펄 핑크 CD, 리릭 포스터를 중심으로 구성한 패키지입니다. 하트 아크릴 키링과 파우치, 스티커까지 데이드림 무드를 손에 잡히는 굿즈로 이어갑니다.</p>
             <div class="kpop-actions">
               <a class="kpop-primary" href="#album-detail">DETAIL VIEW</a>
               <button class="kpop-save" type="button"><span class="material-symbols-outlined" aria-hidden="true">favorite</span></button>
             </div>
             <div class="kpop-version-tabs" aria-label="Album version color">
-              <button class="active" type="button" data-kpop-version="blue">BLUE ver.</button>
-              <button type="button" data-kpop-version="pink">PINK ver.</button>
+              <button class="active" type="button" data-kpop-version="blush">BLUSH ver.</button>
+              <button type="button" data-kpop-version="brown">BROWN ver.</button>
             </div>
           </div>
-          <div class="kpop-sticker-logo" aria-hidden="true">
-            <span>Club</span>
+          <div class="kpop-kit-collage" aria-hidden="true">
+            <div class="kpop-kit-card kpop-kit-card-main">
+              <img id="kpopVersionPackage" src="images/blush-package-hero-cutout.png" alt="" />
+            </div>
+            <div class="kpop-kit-card kpop-kit-card-goods">
+              <img id="kpopVersionGoods" src="images/blush-package-goods-cutout.png" alt="" />
+            </div>
           </div>
         </div>
       </section>
 
       <section id="album-detail" class="inner album-detail-board" aria-label="DAYDREAM CLUB album detail">
         <div class="album-visual">
-          <img src="images/kpop-album-kit.png" srcset="images/kpop-album-kit.png 1024w, images/kpop-album-kit@2x.png 2048w" sizes="(max-width: 1180px) calc(100vw - 64px), calc((100vw - 156px) * .76)" alt="DAYDREAM CLUB fictional K-pop album package spread" />
+          <img src="images/blush-package-kit-board.png" srcset="images/blush-package-kit-board.png 1023w, images/blush-package-kit-board@2x.png 2046w" sizes="(max-width: 1180px) calc(100vw - 64px), calc((100vw - 156px) * .76)" alt="DAYDREAM CLUB BLUSH PACKAGE K-pop album package spread" />
         </div>
         <aside class="album-buy-panel">
           <p class="panel-kicker">PRE-ORDER</p>
-          <h3>DAYDREAM CLUB - Sticker Book Ver.</h3>
+          <h3>DAYDREAM CLUB - Blush Package Kit Ver.</h3>
           <p class="panel-price">₩ 32,000</p>
           <dl class="kit-meta">
             <div><dt>ARTIST</dt><dd>DAYDREAM CLUB</dd></div>
             <div><dt>FORMAT</dt><dd>Album Kit</dd></div>
-            <div><dt>VERSION</dt><dd>Sticker Book Ver.</dd></div>
+            <div><dt>VERSION</dt><dd>Blush Package Kit Ver.</dd></div>
             <div><dt>RELEASE</dt><dd>2026.06.14</dd></div>
           </dl>
           <div class="option-row" aria-label="Version option">
@@ -76,6 +81,17 @@
           </div>
           <p class="panel-note">구성품 일부는 랜덤으로 제공되며, 실제 인쇄 색상은 화면과 다를 수 있습니다.</p>
         </aside>
+      </section>
+
+      <section class="inner kpop-goods-feature" aria-label="DAYDREAM CLUB Blush Package goods">
+        <div class="goods-copy">
+          <p class="kpop-eyebrow">GOODS INCLUDED</p>
+          <h2>Acrylic keyring, sticker sheet, and mini holder.</h2>
+          <p>블러시 하트 아크릴 키링, 베이지 핑크 스티커, 카드 홀더, 패브릭 파우치까지 패키지 밖에서도 바로 보이는 굿즈 컷입니다.</p>
+        </div>
+        <figure class="goods-visual">
+          <img src="images/blush-package-goods-cutout.png" alt="DAYDREAM CLUB BLUSH PACKAGE acrylic keyring and K-pop goods set" />
+        </figure>
       </section>
 
       <section class="kpop-track-band">
