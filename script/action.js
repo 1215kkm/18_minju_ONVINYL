@@ -1,5 +1,12 @@
 const paginationButtons = document.querySelectorAll('.hero-pagination button');
 
+const syncHeaderScrollState = () => {
+  document.body.classList.toggle('is-scrolled', window.scrollY > 8);
+};
+
+syncHeaderScrollState();
+window.addEventListener('scroll', syncHeaderScrollState, { passive: true });
+
 paginationButtons.forEach((button) => {
   button.addEventListener('click', () => {
     paginationButtons.forEach((item) => item.classList.remove('active'));
@@ -130,25 +137,67 @@ if (document.body.classList.contains('kpop-body') && kpopHero) {
   window.addEventListener('resize', syncKpopHeaderMode);
 }
 
-const optionButtons = document.querySelectorAll('.option-row button');
+const optionButtons = document.querySelectorAll('.option-row button[data-product-option]');
+const kpopProductTitle = document.querySelector('#kpopProductTitle');
+const kpopProductPrice = document.querySelector('#kpopProductPrice');
+const kpopProductFormat = document.querySelector('#kpopProductFormat');
+const kpopProductVersion = document.querySelector('#kpopProductVersion');
+
+const kpopProducts = {
+  kit: {
+    title: 'DAYDREAM CLUB\nBlush Package Kit',
+    price: '₩ 32,000',
+    format: 'Album Kit',
+    version: 'Blush Package Kit',
+  },
+  photobook: {
+    title: 'DAYDREAM CLUB\nBlush Photobook Edition',
+    price: '₩ 24,000',
+    format: 'Photobook',
+    version: 'Blush Photobook Edition',
+  },
+  vinyl: {
+    title: 'DAYDREAM CLUB\nBlush Vinyl Edition',
+    price: '₩ 49,000',
+    format: 'Vinyl LP',
+    version: 'Blush Vinyl Edition',
+  },
+};
+
+let selectedKpopProduct = 'vinyl';
+
+const setKpopProduct = (option) => {
+  const nextOption = kpopProducts[option] ? option : 'kit';
+  const product = kpopProducts[nextOption];
+  selectedKpopProduct = nextOption;
+
+  if (kpopProductTitle) kpopProductTitle.textContent = product.title;
+  if (kpopProductPrice) kpopProductPrice.textContent = product.price;
+  if (kpopProductFormat) kpopProductFormat.textContent = product.format;
+  if (kpopProductVersion) kpopProductVersion.textContent = product.version;
+
+  optionButtons.forEach((button) => {
+    const isActive = button.dataset.productOption === nextOption;
+    button.classList.toggle('active', isActive);
+    button.setAttribute('aria-pressed', String(isActive));
+  });
+};
 
 optionButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    optionButtons.forEach((item) => {
-      item.classList.remove('active');
-      item.setAttribute('aria-pressed', 'false');
-    });
-    button.classList.add('active');
-    button.setAttribute('aria-pressed', 'true');
+    setKpopProduct(button.dataset.productOption);
   });
 });
+
+setKpopProduct(selectedKpopProduct);
 
 document.querySelectorAll('.kpop-purchase button[data-feedback]').forEach((button) => {
   const originalText = button.textContent;
 
   button.addEventListener('click', () => {
+    const selectedLabel = kpopProducts[selectedKpopProduct]?.format || 'ITEM';
     button.classList.add('is-feedback');
-    button.textContent = button.dataset.feedback;
+    button.textContent = `${selectedLabel} ${button.dataset.feedback}`;
 
     window.setTimeout(() => {
       button.classList.remove('is-feedback');
