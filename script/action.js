@@ -14,6 +14,265 @@ paginationButtons.forEach((button) => {
   });
 });
 
+const newCatalog = document.querySelector('#newCatalog');
+const newCards = document.querySelectorAll('.new-release-card[data-tags]');
+const newFilters = document.querySelectorAll('[data-new-filter]');
+const newSearch = document.querySelector('#newSearch');
+const newResultCount = document.querySelector('[data-new-result-count]');
+const newEmpty = document.querySelector('[data-new-empty]');
+const newModal = document.querySelector('[data-new-modal]');
+const supportsCart = !document.body.classList.contains('cortis-body');
+
+if (supportsCart && !document.querySelector('[data-new-cart]')) {
+  document.body.insertAdjacentHTML('beforeend', `
+    <aside class="new-cart-drawer" aria-label="Shopping cart" aria-hidden="true" data-new-cart>
+      <button class="new-panel-close" type="button" data-new-cart-close aria-label="Close cart"><span class="material-symbols-outlined">close</span></button>
+      <p class="new-eyebrow">YOUR BAG</p>
+      <h2>Cart</h2>
+      <p class="new-cart-summary"><strong data-cart-summary>2</strong> records selected</p>
+      <div class="new-cart-items" data-new-cart-items></div>
+      <div class="new-cart-total"><span>TOTAL</span><strong data-cart-total>₩ 101,000</strong></div>
+      <button class="new-checkout" type="button" data-new-checkout>CHECKOUT</button>
+    </aside>
+    <div class="new-overlay" data-new-overlay hidden></div>
+  `);
+}
+
+const newCart = document.querySelector('[data-new-cart]');
+const newOverlay = document.querySelector('[data-new-overlay]');
+const newCartCounts = document.querySelectorAll('[data-cart-count]');
+const newCartSummary = document.querySelector('[data-cart-summary]');
+const newCartItems = document.querySelector('[data-new-cart-items]');
+const newCartTotal = document.querySelector('[data-cart-total]');
+let activeNewFilter = 'all';
+let currentNewProduct;
+const cartStorageKey = 'onvinyl-cart-v1';
+const initialCartState = [
+  { product: 'Ruby', artist: 'JENNIE', price: 52000 },
+  { product: 'KARMA', artist: 'Stray Kids', price: 49000 },
+];
+
+const loadCartState = () => {
+  try {
+    const savedCart = JSON.parse(window.localStorage.getItem(cartStorageKey));
+    if (!Array.isArray(savedCart)) return initialCartState;
+
+    return savedCart.filter((product) => (
+      typeof product.product === 'string'
+      && typeof product.artist === 'string'
+      && Number.isFinite(product.price)
+    ));
+  } catch {
+    return initialCartState;
+  }
+};
+
+const saveCartState = (cartState) => {
+  try {
+    window.localStorage.setItem(cartStorageKey, JSON.stringify(cartState));
+  } catch {
+    // Keep the cart usable even when browser storage is unavailable.
+  }
+};
+
+let newCartState = loadCartState();
+
+const closeNewPanels = () => {
+  if (newModal) {
+    newModal.classList.remove('is-open');
+    newModal.setAttribute('aria-hidden', 'true');
+  }
+  if (newCart) {
+    newCart.classList.remove('is-open');
+    newCart.setAttribute('aria-hidden', 'true');
+  }
+  if (newOverlay) newOverlay.hidden = true;
+  document.body.classList.remove('has-new-panel');
+};
+
+const openNewPanel = (panel) => {
+  closeNewPanels();
+  if (!panel || !newOverlay) return;
+
+  panel.classList.add('is-open');
+  panel.setAttribute('aria-hidden', 'false');
+  newOverlay.hidden = false;
+  document.body.classList.add('has-new-panel');
+  panel.querySelector('.new-panel-close')?.focus();
+};
+
+const updateNewResults = () => {
+  const query = newSearch?.value.trim().toLowerCase() || '';
+  let visibleCount = 0;
+
+  newCards.forEach((card) => {
+    const tags = card.dataset.tags || '';
+    const searchText = card.dataset.search || '';
+    const matchesFilter = activeNewFilter === 'all' || tags.includes(activeNewFilter);
+    const matchesSearch = !query || searchText.includes(query);
+    const isVisible = matchesFilter && matchesSearch;
+
+    card.hidden = !isVisible;
+    if (isVisible) visibleCount += 1;
+  });
+
+  if (newResultCount) newResultCount.textContent = String(visibleCount);
+  if (newEmpty) newEmpty.hidden = visibleCount !== 0;
+};
+
+const formatNewPrice = (price) => `₩ ${price.toLocaleString('ko-KR')}`;
+
+const renderNewCart = () => {
+  if (!newCartItems || !newCartSummary || !newCartTotal) return;
+
+  saveCartState(newCartState);
+  newCartItems.replaceChildren();
+  newCartState.forEach((product, index) => {
+    const item = document.createElement('article');
+    const copy = document.createElement('div');
+    const title = document.createElement('p');
+    const price = document.createElement('strong');
+    const remove = document.createElement('button');
+
+    item.className = 'new-cart-item';
+    copy.className = 'new-cart-item-copy';
+    title.textContent = `${product.product} - ${product.artist}`;
+    price.textContent = formatNewPrice(product.price);
+    remove.className = 'new-cart-remove';
+    remove.type = 'button';
+    remove.dataset.newRemoveItem = String(index);
+    remove.setAttribute('aria-label', `${product.product} 삭제`);
+    remove.textContent = '삭제';
+
+    copy.append(title, price);
+    item.append(copy, remove);
+    newCartItems.append(item);
+  });
+
+  if (!newCartState.length) {
+    const empty = document.createElement('p');
+    empty.className = 'new-cart-empty';
+    empty.textContent = '장바구니가 비어 있습니다.';
+    newCartItems.append(empty);
+  }
+
+  const total = newCartState.reduce((sum, product) => sum + product.price, 0);
+  const count = String(newCartState.length);
+  newCartCounts.forEach((cartCount) => {
+    cartCount.textContent = count;
+  });
+  newCartSummary.textContent = count;
+  newCartTotal.textContent = formatNewPrice(total);
+};
+
+if (document.body.classList.contains('new-body')) {
+  newFilters.forEach((button) => {
+    button.addEventListener('click', () => {
+      activeNewFilter = button.dataset.newFilter || 'all';
+      newFilters.forEach((item) => {
+        const isActive = item === button;
+        item.classList.toggle('active', isActive);
+        item.setAttribute('aria-pressed', String(isActive));
+      });
+      updateNewResults();
+    });
+  });
+
+  newSearch?.addEventListener('input', updateNewResults);
+
+  document.querySelector('[data-new-search-toggle]')?.addEventListener('click', () => {
+    newCatalog?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => newSearch?.focus({ preventScroll: true }), 280);
+  });
+
+  document.querySelector('[data-new-reset]')?.addEventListener('click', () => {
+    activeNewFilter = 'all';
+    if (newSearch) newSearch.value = '';
+    newFilters.forEach((item) => {
+      const isActive = item.dataset.newFilter === 'all';
+      item.classList.toggle('active', isActive);
+      item.setAttribute('aria-pressed', String(isActive));
+    });
+    updateNewResults();
+    newCatalog?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  document.querySelectorAll('[data-new-quickview]').forEach((button) => {
+    button.addEventListener('click', () => {
+      currentNewProduct = {
+        product: button.dataset.product || '',
+        artist: button.dataset.artist || '',
+        detail: button.dataset.detail || '',
+        price: button.dataset.price || '',
+      };
+      const modalImage = document.querySelector('[data-new-modal-image]');
+      if (modalImage) {
+        modalImage.src = button.dataset.image || '';
+        modalImage.alt = `${currentNewProduct.artist} ${currentNewProduct.product} vinyl preview`;
+      }
+      document.querySelector('[data-new-modal-product]').textContent = currentNewProduct.product;
+      document.querySelector('[data-new-modal-artist]').textContent = currentNewProduct.artist;
+      document.querySelector('[data-new-modal-detail]').textContent = currentNewProduct.detail;
+      document.querySelector('[data-new-modal-price]').textContent = currentNewProduct.price;
+      document.querySelector('[data-new-modal-badge]').textContent = button.dataset.badge || 'NEW';
+      openNewPanel(newModal);
+    });
+  });
+
+  document.querySelector('[data-new-add-cart]')?.addEventListener('click', () => {
+    if (!currentNewProduct) return;
+    newCartState.push({
+      product: currentNewProduct.product,
+      artist: currentNewProduct.artist,
+      price: Number(currentNewProduct.price.replace(/[^0-9]/g, '')),
+    });
+    renderNewCart();
+    openNewPanel(newCart);
+  });
+
+  document.querySelector('[data-new-newsletter]')?.addEventListener('submit', () => {
+    const status = document.querySelector('[data-new-newsletter-status]');
+    if (status) status.textContent = '구독 신청이 완료되었습니다.';
+  });
+
+  updateNewResults();
+}
+
+if (supportsCart && newCart) {
+  document.querySelectorAll('[data-cart-toggle]').forEach((button) => {
+    button.addEventListener('click', () => openNewPanel(newCart));
+  });
+
+  document.querySelectorAll('[data-new-close], [data-new-cart-close]').forEach((button) => {
+    button.addEventListener('click', closeNewPanels);
+  });
+  newOverlay?.addEventListener('click', closeNewPanels);
+
+  newCartItems?.addEventListener('click', (event) => {
+    const removeButton = event.target.closest('[data-new-remove-item]');
+    if (!removeButton) return;
+
+    const itemIndex = Number(removeButton.dataset.newRemoveItem);
+    newCartState.splice(itemIndex, 1);
+    renderNewCart();
+  });
+
+  document.querySelector('[data-new-checkout]')?.addEventListener('click', () => {
+    const button = document.querySelector('[data-new-checkout]');
+    if (!button) return;
+    button.textContent = 'CHECKOUT READY';
+    window.setTimeout(() => {
+      button.textContent = 'CHECKOUT';
+    }, 1200);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeNewPanels();
+  });
+
+  renderNewCart();
+}
+
 document.querySelectorAll('form').forEach((form) => {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -205,3 +464,27 @@ document.querySelectorAll('.kpop-purchase button[data-feedback]').forEach((butto
     }, 1200);
   });
 });
+
+const genreSections = document.querySelectorAll('[data-genre-section]');
+const genreRailLinks = document.querySelectorAll('[data-genre-rail-link]');
+
+if (document.body.classList.contains('genre-body') && genreSections.length && genreRailLinks.length) {
+  const setActiveGenreSection = (sectionId) => {
+    genreRailLinks.forEach((link) => {
+      link.classList.toggle('active', link.dataset.genreRailLink === sectionId);
+    });
+  };
+
+  const genreSectionObserver = new IntersectionObserver((entries) => {
+    const visibleEntry = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0];
+
+    if (visibleEntry) setActiveGenreSection(visibleEntry.target.id);
+  }, {
+    rootMargin: '-22% 0px -54% 0px',
+    threshold: [0, .15, .35, .6],
+  });
+
+  genreSections.forEach((section) => genreSectionObserver.observe(section));
+}

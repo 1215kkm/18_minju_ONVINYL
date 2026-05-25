@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BEST | ONVINYL</title>
+    <title>BEST SELLERS | ONVINYL</title>
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@32,300,0,0" />
-    <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=shared-cart-20260525-1" />
   </head>
-  <body class="detail-body">
+  <body class="best-body">
     <header class="site-header">
       <div class="inner header-inner">
         <h1 class="logo-wrap"><a href="index.html"><img src="images/logo_.png" alt="ONVINYL" class="logo-img" /></a></h1>
@@ -17,162 +17,120 @@
           <div class="nav-menu-group">
             <a href="new.html">NEW</a>
             <a class="active" href="best.html">BEST SELLERS</a>
-            <a href="#">GENRE</a>
-            <a href="#">ABOUT</a>
+            <a href="genre.html">GENRE</a>
+            <a href="about.html">ABOUT</a>
           </div>
         </nav>
         <div class="header-icons" aria-label="Utility navigation">
-          <button class="icon-btn" aria-label="Search"><span class="material-symbols-outlined">search</span></button>
-          <button class="icon-btn" aria-label="Account"><span class="material-symbols-outlined">person</span></button>
-          <button class="icon-btn bag-icon" aria-label="Cart"><span class="material-symbols-outlined">shopping_bag</span><em>2</em></button>
+          <a class="icon-btn" href="#bestCatalog" aria-label="Browse best sellers"><span class="material-symbols-outlined">search</span></a>
+          <a class="icon-btn" href="index.html#collection-support" aria-label="Membership benefits"><span class="material-symbols-outlined">person</span></a>
+          <button class="icon-btn bag-icon" type="button" data-cart-toggle aria-label="Open cart"><span class="material-symbols-outlined">shopping_bag</span><em data-cart-count>2</em></button>
         </div>
       </div>
     </header>
 
-    <main class="product-page">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <div class="inner breadcrumb-inner">
-          <a href="index.html">HOME</a>
-          <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
-          <a href="best.html">BEST SELLERS</a>
-          <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
-          <strong>[VINYL] LE SSERAFIM - EASY (LP)</strong>
+    <main class="best-page">
+      <section class="best-hero" aria-label="Weekly number one best seller">
+        <div class="best-hero-copy">
+          <p class="best-eyebrow">WEEKLY CHART / NO. 01</p>
+          <h2>BEST<br /><span>SELLERS</span></h2>
+          <p class="best-intro">이번 주 가장 많은 사랑을 받은 K-POP 바이닐을 만나보세요. 판매량과 컬렉터 리뷰로 완성한 온바이닐 차트입니다.</p>
+          <div class="best-chart-date"><strong>2026. 05</strong><span>WEEK 04</span></div>
         </div>
-      </nav>
-
-      <section class="inner product-hero">
-        <div class="gallery-panel">
-          <div class="gallery-label"><span>BEST</span></div>
-          <button class="gallery-arrow gallery-prev" type="button" aria-label="Previous image"><span class="material-symbols-outlined">arrow_back</span></button>
-          <div class="main-product-blank"><img id="mainProductImage" src="images/sub_main.png" alt="LE SSERAFIM EASY LP package" /></div>
-          <button class="gallery-arrow gallery-next" type="button" aria-label="Next image"><span class="material-symbols-outlined">arrow_forward</span></button>
-          <div class="thumb-row" aria-label="Product thumbnails">
-            <button class="thumb active" type="button" aria-label="Thumbnail 1" data-main="images/sub_s1.png"><img src="images/sub_s1.png" alt="LE SSERAFIM EASY LP cover and vinyl" /></button>
-            <button class="thumb" type="button" aria-label="Thumbnail 2" data-main="images/sub_s2.png"><img src="images/sub_s2.png" alt="LE SSERAFIM marble vinyl" /></button>
-            <button class="thumb" type="button" aria-label="Thumbnail 3" data-main="images/sub_s3.png"><img src="images/sub_s3.png" alt="LE SSERAFIM blue vinyl" /></button>
-            <button class="thumb" type="button" aria-label="Thumbnail 4" data-main="images/sub_s4.png"><img src="images/sub_s4.png" alt="LE SSERAFIM EASY back cover" /></button>
+        <article class="best-champion">
+          <div class="best-champion-media">
+            <span class="best-rank">01</span>
+            <img src="images/sub_main.png" alt="LE SSERAFIM EASY LP package and vinyl" />
           </div>
-        </div>
-
-        <article class="product-info">
-          <p class="eyebrow">BEST SELLERS</p>
-          <h2>[VINYL] LE SSERAFIM - EASY (LP)</h2>
-          <p class="detail-price">₩ 49,800</p>
-          <dl class="product-meta">
-            <div><dt>ARTIST</dt><dd>LE SSERAFIM</dd></div>
-            <div><dt>RELEASE DATE</dt><dd>2024.02.19</dd></div>
-            <div><dt>LABEL</dt><dd>SOURCE MUSIC</dd></div>
-            <div><dt>FORMAT</dt><dd>LP</dd></div>
-            <div><dt>WEIGHT</dt><dd>350g</dd></div>
-          </dl>
-          <div class="buy-controls">
-            <div class="quantity" aria-label="Quantity">
-              <button type="button">−</button>
-              <span>1</span>
-              <button type="button">+</button>
-            </div>
-            <p>재고 14개</p>
-            <button class="wish-btn" type="button" aria-label="Add to wishlist"><span class="material-symbols-outlined">favorite</span></button>
-          </div>
-          <div class="purchase-actions">
-            <button class="cart-btn" type="button">ADD TO CART</button>
-            <button class="buy-btn" type="button">BUY NOW</button>
-          </div>
-          <div class="benefit-box">
-            <article>
-              <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
-              <div><h3>5만원 이상 구매 시 무료배송</h3><p>5만원 미만 주문시 3,000원 배송비가 부과됩니다.</p></div>
-            </article>
-            <article>
-              <span class="material-symbols-outlined" aria-hidden="true">published_with_changes</span>
-              <div><h3>교환 및 환불 안내</h3><p>상품 수령 후 7일 이내 교환 및 환불이 가능합니다.</p></div>
-            </article>
-            <article>
-              <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
-              <div><h3>안전한 포장, 빠른 배송</h3><p>전문 포장으로 안전하게 배송해드립니다.</p></div>
-            </article>
+          <div class="best-champion-copy">
+            <p>3주 연속 TOP 3 <span>↑ 1</span></p>
+            <h3>EASY</h3>
+            <strong>LE SSERAFIM</strong>
+            <small>르세라핌의 절제된 그루브와 강렬한 무드를 투명 블루 바이닐로 소장해보세요.</small>
+            <div class="best-edition-meta"><span>LIMITED BLUE VINYL</span><span>IN STOCK</span></div>
+            <b>₩ 49,800</b>
+            <a href="best-detail.html">상품 상세 보기 <span aria-hidden="true">→</span></a>
           </div>
         </article>
       </section>
 
-      <section class="inner product-tabs">
-        <div class="tab-nav" role="tablist" aria-label="Product sections">
-          <button type="button" role="tab">DESCRIPTION</button>
-          <button class="active" type="button" role="tab">TRACK LIST</button>
-          <button type="button" role="tab">DETAILS</button>
-          <button type="button" role="tab">SHIPPING</button>
-          <button type="button" role="tab">Q&amp;A</button>
+      <section class="best-podium" aria-label="Top three best sellers">
+        <div class="best-section-head">
+          <div>
+            <p class="best-eyebrow">TOP RANKING</p>
+            <h2>이번 주 TOP 3</h2>
+          </div>
+          <div class="best-period" aria-label="Chart period"><span class="active">WEEKLY</span><span>MONTHLY</span><span>ALL TIME</span></div>
         </div>
-        <div class="track-list">
-          <article>
-            <h3>SIDE A</h3>
-            <ol>
-              <li><span>01. EASY</span><time>02:45</time></li>
-              <li><span>02. Smart</span><time>02:57</time></li>
-              <li><span>03. Good Bones</span><time>02:43</time></li>
-            </ol>
+        <div class="best-podium-grid">
+          <a class="best-podium-card number-one" href="best-detail.html">
+            <span class="best-podium-number">01</span>
+            <img src="images/sub_main.png" alt="LE SSERAFIM EASY LP" />
+            <div><h3>EASY (LP)</h3><p class="best-card-artist">LE SSERAFIM</p><strong>₩ 49,800</strong><b class="best-card-tag">BEST</b></div>
+          </a>
+          <article class="best-podium-card">
+            <span class="best-podium-number">02</span>
+            <img src="images/new-jennie-ruby-vinyl.png" alt="JENNIE Ruby red vinyl LP" />
+            <div><h3>Ruby (LP)</h3><p class="best-card-artist">JENNIE</p><strong>₩ 52,000</strong><b class="best-card-tag">NEW</b></div>
           </article>
-          <article>
-            <h3>SIDE B</h3>
-            <ol>
-              <li><span>01. Swan Song</span><time>03:19</time></li>
-              <li><span>02. We got so much</span><time>02:51</time></li>
-              <li><span>03. EASY (Instrumental)</span><time>02:45</time></li>
-            </ol>
+          <article class="best-podium-card">
+            <span class="best-podium-number">03</span>
+            <img src="images/new-straykids-karma-vinyl.png" alt="Stray Kids KARMA vinyl LP" />
+            <div><h3>KARMA (LP)</h3><p class="best-card-artist">Stray Kids</p><strong>₩ 49,000</strong><b class="best-card-tag">LP</b></div>
           </article>
         </div>
       </section>
 
-      <section class="inner review-section">
-        <div class="review-head">
-          <h2>REVIEWS (12)</h2>
-          <button type="button">WRITE A REVIEW</button>
+      <section class="best-catalog" id="bestCatalog" aria-label="Ranked best seller catalog">
+        <div class="best-section-head">
+          <div>
+            <p class="best-eyebrow">CHART LIST</p>
+            <h2>가장 많이 소장된 앨범</h2>
+          </div>
+          <p class="best-count">TOP 10 VINYL</p>
         </div>
-        <article class="review-card">
-          <div class="review-meta">
-            <span class="stars">★★★★★</span>
-            <strong>5.0</strong>
-            <b>김은비</b>
-            <i></i>
-            <time>2024.03.01</time>
-          </div>
-          <p>음질 너무 좋고 패키지도 예뻐요! 안전하게 잘 도착했습니다.</p>
-          <div class="review-help">
-            <span>이 구매가 도움이 되었나요?</span>
-            <button type="button" aria-label="Helpful"><span class="material-symbols-outlined">thumb_up</span>12</button>
-            <button type="button" aria-label="Not helpful"><span class="material-symbols-outlined">thumb_down</span>0</button>
-          </div>
-        </article>
-        <div class="review-dots" aria-label="Review pagination"><button class="active" type="button"></button><button type="button"></button><button type="button"></button><button type="button"></button></div>
+        <div class="best-ranked-grid">
+          <article class="best-ranked-card"><span>04</span><img src="images/new-rose-rosie-red-vinyl.png" alt="ROSÉ rosie red vinyl" /><h3>rosie (LP)</h3><p class="best-card-artist">ROSÉ</p><strong>₩ 52,000</strong><b class="best-card-tag">LP</b></article>
+          <article class="best-ranked-card"><span>05</span><img src="images/new-jungkook-golden-vinyl.jpg" alt="Jung Kook GOLDEN vinyl" /><h3>GOLDEN (LP)</h3><p class="best-card-artist">Jung Kook</p><strong>₩ 53,000</strong><b class="best-card-tag">LP</b></article>
+          <article class="best-ranked-card"><span>06</span><img src="images/new-txt-sanctuary-vinyl.png" alt="TXT Sanctuary vinyl" /><h3>SANCTUARY (LP)</h3><p class="best-card-artist">TOMORROW X TOGETHER</p><strong>₩ 48,000</strong><b class="best-card-tag">LP</b></article>
+          <article class="best-ranked-card"><span>07</span><img src="images/new-blackpink-the-album-vinyl.png" alt="BLACKPINK THE ALBUM vinyl" /><h3>THE ALBUM (LP)</h3><p class="best-card-artist">BLACKPINK</p><strong>₩ 59,000</strong><b class="best-card-tag">LP</b></article>
+          <article class="best-ranked-card"><span>08</span><img src="images/new-twice-strategy-vinyl.png" alt="TWICE STRATEGY vinyl" /><h3>STRATEGY (LP)</h3><p class="best-card-artist">TWICE</p><strong>₩ 48,000</strong><b class="best-card-tag">LP</b></article>
+          <article class="best-ranked-card"><span>09</span><img src="images/new-rm-rpwp-vinyl.jpg" alt="RM Right Place Wrong Person vinyl" /><h3>Right Place, Wrong Person (LP)</h3><p class="best-card-artist">RM</p><strong>₩ 54,000</strong><b class="best-card-tag">LP</b></article>
+          <article class="best-ranked-card"><span>10</span><img src="images/new-twice-with-youth-vinyl.png" alt="TWICE With YOU-th vinyl" /><h3>With YOU-th (LP)</h3><p class="best-card-artist">TWICE</p><strong>₩ 47,000</strong><b class="best-card-tag">LP</b></article>
+        </div>
       </section>
 
-      <section class="recommend-section">
-        <div class="inner">
-          <h2>YOU MAY ALSO LIKE</h2>
-          <div class="recommend-row">
-            <article class="recommend-card"><div class="recommend-media" aria-label="추천 상품 이미지 영역"></div><h3>LISA - Alter Ego (LP)</h3><p>₩ 62,000</p></article>
-            <article class="recommend-card"><div class="recommend-media" aria-label="추천 상품 이미지 영역"></div><h3>NewJeans - Get Up (LP)</h3><p>₩ 45,000</p></article>
-            <article class="recommend-card"><div class="recommend-media" aria-label="추천 상품 이미지 영역"></div><h3>SEVENTEEN - FML (LP)</h3><p>₩ 49,000</p></article>
-          </div>
+      <section class="best-collector" aria-label="Collector's pick">
+        <div>
+          <p class="best-eyebrow">COLLECTOR'S PICK</p>
+          <h2>컬러 바이닐로<br />완성하는 베스트 컬렉션</h2>
+          <p>차트 상위권 앨범 중 소장 가치가 높은 컬러 프레싱만 골라 소개합니다.</p>
+          <a href="new.html">컬렉션 둘러보기 <span aria-hidden="true">→</span></a>
+        </div>
+        <img src="images/new-rose-rosie-clear-vinyl.png" alt="ROSÉ rosie clear vinyl collector selection" />
+      </section>
+
+      <section class="best-voices" aria-label="Listener reviews">
+        <div class="best-section-head">
+          <div><p class="best-eyebrow">LISTENERS' FAVORITES</p><h2>많이 사랑받는 이유</h2></div>
+        </div>
+        <div class="best-voice-grid">
+          <article><strong>★★★★★</strong><p>음질도 좋고 패키지가 정말 깔끔하게 도착했어요. 오래 소장하고 싶은 LP입니다.</p><small>EASY 구매자 / 김은비</small></article>
+          <article><strong>★★★★★</strong><p>컬러 바이닐이 화면보다 훨씬 예뻐요. 선물용으로도 만족스러웠습니다.</p><small>Ruby 구매자 / 박서연</small></article>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="inner footer-grid">
-        <div class="footer-brand"><img src="images/logo_.png" alt="ONVINYL" /><p>Music lives here.<br />K-Pop on Vinyl.</p><div class="socials" aria-label="Social links">
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17" cy="7" r="1.2" /></svg></a>
-            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 7.5c.3-1.2 1.2-2 2.4-2.2 2-.3 8.2-.3 10.2 0 1.2.2 2.1 1 2.4 2.2.4 1.8.4 7.2 0 9-.3 1.2-1.2 2-2.4 2.2-2 .3-8.2.3-10.2 0-1.2-.2-2.1-1-2.4-2.2-.4-1.8-.4-7.2 0-9Z" /><path d="M10 9v6l5-3-5-3Z" /></svg></a>
-            <a href="#" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l14 16M19 4 5 20" /></svg></a>
-            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4v9.2a4.2 4.2 0 1 1-3.3-4.1" /><path d="M14 4c.7 2.8 2.5 4.5 5 5" /></svg></a>
-          </div></div>
-        <div><h3>SHOP</h3><a href="new.html">New</a><a href="best.html">Best Sellers</a><a href="kpop.html">This Week: CORTIS</a><a href="#">Genre</a></div>
-        <div><h3>INFORMATION</h3><a href="#">About Us</a><a href="#">Notice</a><a href="#">FAQ</a><a href="#">Shipping</a><a href="#">Returns</a></div>
-        <div><h3>CUSTOMER</h3><a href="#">Contact</a><a href="#">1:1 문의</a><a href="#">이용 안내</a></div>
+        <div class="footer-brand"><img src="images/logo_.png" alt="ONVINYL" /><p>Music lives here.<br />K-Pop on vinyl.</p></div>
+        <div><h3>SHOP</h3><a href="new.html">New</a><a href="best.html">Best Sellers</a><a href="genre.html">Genre</a><a href="kpop.html">This Week: CORTIS</a></div>
+        <div><h3>INFORMATION</h3><a href="about.html">About Us</a><a href="index.html#collection-support">Shipping</a><a href="index.html#collection-support">Returns</a></div>
+        <div><h3>CUSTOMER</h3><a href="mailto:hello@onvinyl.kr">Contact</a><a href="index.html#collection-support">이용 안내</a></div>
         <div class="footer-newsletter"><h3>NEWSLETTER</h3><input type="email" placeholder="이메일 주소 입력" aria-label="Footer email" /><button type="button">구독하기</button></div>
       </div>
-      <div class="inner footer-bottom"><p>© ONVINYL. All rights reserved.</p><p><a href="#">이용약관</a><a href="#">개인정보처리방침</a></p></div>
+      <div class="inner footer-bottom"><p>© ONVINYL. All rights reserved.</p><p><a href="mailto:hello@onvinyl.kr">개인정보 문의</a></p></div>
     </footer>
-    <script src="script/action.js"></script>
+  <script src="script/action.js?v=shared-cart-20260525-4"></script>
   </body>
 </html>

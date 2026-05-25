@@ -6,7 +6,7 @@
     <title>NEW RELEASES | ONVINYL</title>
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@32,300,0,0" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css?v=new-20260525-12" />
   </head>
   <body class="new-body">
     <header class="site-header">
@@ -17,291 +17,373 @@
           <div class="nav-menu-group">
             <a class="active" href="new.html">NEW</a>
             <a href="best.html">BEST SELLERS</a>
-            <a href="#">GENRE</a>
-            <a href="#">ABOUT</a>
+            <a href="genre.html">GENRE</a>
+            <a href="about.html">ABOUT</a>
           </div>
         </nav>
         <div class="header-icons" aria-label="Utility navigation">
-          <button class="icon-btn" aria-label="Search"><span class="material-symbols-outlined">search</span></button>
-          <button class="icon-btn" aria-label="Account"><span class="material-symbols-outlined">person</span></button>
-          <button class="icon-btn bag-icon" aria-label="Cart"><span class="material-symbols-outlined">shopping_bag</span><em>2</em></button>
+          <button class="icon-btn" type="button" data-new-search-toggle aria-label="Search products"><span class="material-symbols-outlined">search</span></button>
+          <a class="icon-btn" href="index.html#collection-support" aria-label="Membership benefits"><span class="material-symbols-outlined">person</span></a>
+          <button class="icon-btn bag-icon" type="button" data-cart-toggle aria-label="Open cart"><span class="material-symbols-outlined">shopping_bag</span><em data-cart-count>2</em></button>
         </div>
       </div>
     </header>
 
     <main class="new-page">
-      <section class="new-catalog" aria-label="New vinyl releases">
-        <div class="new-catalog-head">
-          <h2>New releases</h2>
-          <nav class="new-filter" aria-label="Release filters">
-            <a class="active" href="#">Pre-order</a>
-            <a href="#">By artist</a>
-            <a href="#">By genre</a>
-            <a href="#">View all</a>
-          </nav>
+      <section class="new-spotlight" aria-label="Featured new release">
+        <div class="new-spotlight-copy">
+          <p class="new-eyebrow">FEATURED DROP / PRE-ORDER</p>
+          <h2>Ruby<br /><span>Red LP</span></h2>
+          <p class="new-spotlight-artist">JENNIE</p>
+          <p class="new-spotlight-summary">제니의 첫 솔로 정규 앨범 &lt;Ruby&gt;를 선명한 레드 바이닐로 만나보세요. 다채로운 보컬과 자신감 있는 무드를 소장 가치 높은 LP에 담았습니다.</p>
+          <p class="new-spotlight-price">₩ 52,000</p>
+          <div class="new-spotlight-actions">
+            <button type="button" data-new-quickview data-product="Ruby" data-artist="JENNIE" data-detail="RUBY RED LP · OFFICIAL VINYL" data-price="₩ 52,000" data-image="images/new-jennie-ruby-vinyl.png" data-badge="PRE-ORDER">QUICK VIEW</button>
+            <a href="#newCatalog">SHOP NEW RELEASES</a>
+          </div>
         </div>
+        <figure class="new-spotlight-media">
+          <span>LIMITED RED PRESSING</span>
+          <img src="images/new-jennie-ruby-vinyl.png" alt="JENNIE Ruby red vinyl LP featured release" />
+        </figure>
+      </section>
+
+      <section class="new-catalog" id="newCatalog" aria-label="New vinyl releases">
+        <div class="new-catalog-head">
+          <div>
+            <p class="new-eyebrow">NEW IN / VINYL</p>
+            <h2>New releases</h2>
+          </div>
+          <div class="new-catalog-tools">
+            <div class="new-filter" aria-label="Release filters">
+              <button class="active" type="button" data-new-filter="all" aria-pressed="true">ALL</button>
+              <button type="button" data-new-filter="preorder" aria-pressed="false">PRE-ORDER</button>
+              <button type="button" data-new-filter="exclusive" aria-pressed="false">EXCLUSIVE</button>
+              <button type="button" data-new-filter="stock" aria-pressed="false">IN STOCK</button>
+            </div>
+            <label class="new-search" for="newSearch">
+              <span class="material-symbols-outlined" aria-hidden="true">search</span>
+              <input id="newSearch" type="search" placeholder="Search artist or album" autocomplete="off" />
+            </label>
+          </div>
+        </div>
+        <p class="new-results" aria-live="polite"><strong data-new-result-count>20</strong> releases available</p>
 
         <div class="new-release-grid">
-          <article class="new-release-card is-red is-cutout">
-            <a class="new-release-media" href="#" aria-label="JENNIE Ruby LP">
+          <article class="new-release-card is-red is-cutout" data-tags="preorder exclusive" data-search="ruby jennie red lp official vinyl">
+            <button class="new-release-media" type="button" data-new-quickview data-product="Ruby" data-artist="JENNIE" data-detail="RUBY RED LP · OFFICIAL VINYL" data-price="₩ 52,000" data-image="images/new-jennie-ruby-vinyl.png" data-badge="PRE-ORDER" aria-label="View JENNIE Ruby LP">
+              <span class="new-release-badge">PRE-ORDER</span>
               <img src="images/new-jennie-ruby-vinyl.png" alt="JENNIE Ruby red vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>Ruby</h3>
               <p class="new-release-artist">JENNIE</p>
-              <p class="new-release-meta">RUBY RED LP · OFFICIAL VINYL</p>
+              <p class="new-release-meta">강렬한 레드 바이닐로 만나는 첫 정규 앨범</p>
               <strong>₩ 52,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="BLACKPINK THE ALBUM LP">
+          <article class="new-release-card is-cutout" data-tags="exclusive" data-search="blackpink the album limited pink vinyl lp">
+            <button class="new-release-media" type="button" data-new-quickview data-product="THE ALBUM" data-artist="BLACKPINK" data-detail="LIMITED PINK VINYL · LP" data-price="₩ 59,000" data-image="images/new-blackpink-the-album-vinyl.png" data-badge="LIMITED" aria-label="View BLACKPINK THE ALBUM LP">
+              <span class="new-release-badge">LIMITED</span>
               <img src="images/new-blackpink-the-album-vinyl.png" alt="BLACKPINK THE ALBUM pink vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>THE ALBUM</h3>
               <p class="new-release-artist">BLACKPINK</p>
-              <p class="new-release-meta">LIMITED PINK VINYL · LP</p>
+              <p class="new-release-meta">핑크 바이닐에 담은 블랙핑크의 대표 앨범</p>
               <strong>₩ 59,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="TXT The Star Chapter Sanctuary LP">
+          <article class="new-release-card is-cutout" data-tags="preorder" data-search="txt tomorrow x together the star chapter sanctuary white vinyl lp">
+            <button class="new-release-media" type="button" data-new-quickview data-product="THE STAR CHAPTER: SANCTUARY" data-artist="TOMORROW X TOGETHER" data-detail="WHITE VINYL · LP" data-price="₩ 48,000" data-image="images/new-txt-sanctuary-vinyl.png" data-badge="PRE-ORDER" aria-label="View TXT The Star Chapter Sanctuary LP">
+              <span class="new-release-badge">PRE-ORDER</span>
               <img src="images/new-txt-sanctuary-vinyl.png" alt="TXT The Star Chapter Sanctuary white vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>THE STAR CHAPTER: SANCTUARY</h3>
               <p class="new-release-artist">TOMORROW X TOGETHER</p>
-              <p class="new-release-meta">WHITE VINYL · LP</p>
+              <p class="new-release-meta">청춘의 설렘을 담은 화이트 바이닐 에디션</p>
               <strong>₩ 48,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="LE SSERAFIM EASY CRAZY HOT LP">
+          <article class="new-release-card is-cutout" data-tags="stock" data-search="le sserafim easy crazy hot carbon black vinyl lp">
+            <button class="new-release-media" type="button" data-new-quickview data-product="EASY CRAZY HOT" data-artist="LE SSERAFIM" data-detail="CARBON BLACK VINYL · LP" data-price="₩ 46,000" data-image="images/new-lesserafim-easy-crazy-hot-vinyl.jpg" data-badge="IN STOCK" aria-label="View LE SSERAFIM EASY CRAZY HOT LP">
               <img src="images/new-lesserafim-easy-crazy-hot-vinyl.jpg" alt="LE SSERAFIM EASY CRAZY HOT carbon black vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>EASY CRAZY HOT</h3>
               <p class="new-release-artist">LE SSERAFIM</p>
-              <p class="new-release-meta">CARBON BLACK VINYL · LP</p>
+              <p class="new-release-meta">당당한 에너지를 담아낸 블랙 바이닐</p>
               <strong>₩ 46,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="CHAEYOUNG LIL FANTASY vol.1 LP">
+          <article class="new-release-card is-cutout" data-tags="preorder" data-search="chaeyoung lil fantasy vol 1 standard black lp">
+            <button class="new-release-media" type="button" data-new-quickview data-product="LIL FANTASY vol.1" data-artist="CHAEYOUNG" data-detail="STANDARD BLACK LP" data-price="₩ 48,000" data-image="images/new-chaeyoung-lil-fantasy-vinyl.jpg" data-badge="PRE-ORDER" aria-label="View CHAEYOUNG LIL FANTASY vol.1 LP">
+              <span class="new-release-badge">PRE-ORDER</span>
               <img src="images/new-chaeyoung-lil-fantasy-vinyl.jpg" alt="CHAEYOUNG LIL FANTASY vol.1 standard black LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>LIL FANTASY vol.1</h3>
               <p class="new-release-artist">CHAEYOUNG</p>
-              <p class="new-release-meta">STANDARD BLACK LP</p>
+              <p class="new-release-meta">채영의 상상력을 펼친 첫 솔로 컬렉션</p>
               <strong>₩ 48,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="DxS SERENADE LP">
+          <article class="new-release-card is-cutout" data-tags="preorder" data-search="dxs seventeen serenade 1st mini album lp">
+            <button class="new-release-media" type="button" data-new-quickview data-product="SERENADE" data-artist="DxS (SEVENTEEN)" data-detail="1ST MINI ALBUM · LP" data-price="₩ 49,000" data-image="images/new-dxs-serenade-vinyl.jpg" data-badge="PRE-ORDER" aria-label="View DxS SERENADE LP">
+              <span class="new-release-badge">PRE-ORDER</span>
               <img src="images/new-dxs-serenade-vinyl.jpg" alt="DxS SERENADE vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>SERENADE</h3>
               <p class="new-release-artist">DxS (SEVENTEEN)</p>
-              <p class="new-release-meta">1ST MINI ALBUM · LP</p>
+              <p class="new-release-meta">두 목소리의 감성을 담은 첫 미니 앨범</p>
               <strong>₩ 49,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="RM Right Place Wrong Person LP">
+          <article class="new-release-card is-cutout" data-tags="stock" data-search="rm right place wrong person solo album lp">
+            <button class="new-release-media" type="button" data-new-quickview data-product="Right Place, Wrong Person" data-artist="RM" data-detail="2ND SOLO ALBUM · LP" data-price="₩ 54,000" data-image="images/new-rm-rpwp-vinyl.jpg" data-badge="IN STOCK" aria-label="View RM Right Place Wrong Person LP">
               <img src="images/new-rm-rpwp-vinyl.jpg" alt="RM Right Place Wrong Person vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>Right Place, Wrong Person</h3>
               <p class="new-release-artist">RM</p>
-              <p class="new-release-meta">2ND SOLO ALBUM · LP</p>
+              <p class="new-release-meta">RM의 깊어진 시선을 담은 두 번째 솔로 앨범</p>
               <strong>₩ 54,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="Agust D D-DAY LP">
+          <article class="new-release-card is-cutout" data-tags="stock" data-search="agust d d-day solo album lp">
+            <button class="new-release-media" type="button" data-new-quickview data-product="D-DAY" data-artist="Agust D" data-detail="SOLO ALBUM · LP" data-price="₩ 52,000" data-image="images/new-agustd-dday-vinyl.png" data-badge="IN STOCK" aria-label="View Agust D D-DAY LP">
               <img src="images/new-agustd-dday-vinyl.png" alt="Agust D D-DAY vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>D-DAY</h3>
               <p class="new-release-artist">Agust D</p>
-              <p class="new-release-meta">SOLO ALBUM · LP</p>
+              <p class="new-release-meta">Agust D의 서사를 완성하는 솔로 앨범</p>
               <strong>₩ 52,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="j-hope HOPE ON THE STREET VOL.1 LP">
+          <article class="new-release-card is-cutout" data-tags="stock" data-search="j-hope hope on the street vol 1 special vinyl lp">
+            <button class="new-release-media" type="button" data-new-quickview data-product="HOPE ON THE STREET VOL.1" data-artist="j-hope" data-detail="SPECIAL VINYL · LP" data-price="₩ 49,000" data-image="images/new-jhope-hots-vinyl.jpg" data-badge="IN STOCK" aria-label="View j-hope HOPE ON THE STREET VOL.1 LP">
               <img src="images/new-jhope-hots-vinyl.jpg" alt="j-hope HOPE ON THE STREET VOL.1 vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>HOPE ON THE STREET VOL.1</h3>
               <p class="new-release-artist">j-hope</p>
-              <p class="new-release-meta">SPECIAL VINYL · LP</p>
+              <p class="new-release-meta">거리의 리듬과 자유로움을 담은 스페셜 LP</p>
               <strong>₩ 49,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="V Layover LP">
+          <article class="new-release-card is-cutout" data-tags="stock" data-search="v layover solo album lp">
+            <button class="new-release-media" type="button" data-new-quickview data-product="Layover" data-artist="V" data-detail="SOLO ALBUM · LP" data-price="₩ 51,000" data-image="images/new-v-layover-vinyl.png" data-badge="IN STOCK" aria-label="View V Layover LP">
               <img src="images/new-v-layover-vinyl.png" alt="V Layover vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>Layover</h3>
               <p class="new-release-artist">V</p>
-              <p class="new-release-meta">SOLO ALBUM · LP</p>
+              <p class="new-release-meta">편안한 감성으로 채운 V의 솔로 앨범</p>
               <strong>₩ 51,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="Jimin FACE LP">
+          <article class="new-release-card is-cutout" data-tags="stock" data-search="jimin face solo album lp">
+            <button class="new-release-media" type="button" data-new-quickview data-product="FACE" data-artist="Jimin" data-detail="SOLO ALBUM · LP" data-price="₩ 49,000" data-image="images/new-jimin-face-vinyl.jpg" data-badge="IN STOCK" aria-label="View Jimin FACE LP">
               <img src="images/new-jimin-face-vinyl.jpg" alt="Jimin FACE vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>FACE</h3>
               <p class="new-release-artist">Jimin</p>
-              <p class="new-release-meta">SOLO ALBUM · LP</p>
+              <p class="new-release-meta">지민의 첫 솔로 감성을 담은 바이닐</p>
               <strong>₩ 49,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="Jimin MUSE LP">
+          <article class="new-release-card is-cutout" data-tags="stock" data-search="jimin muse solo album lp">
+            <button class="new-release-media" type="button" data-new-quickview data-product="MUSE" data-artist="Jimin" data-detail="SOLO ALBUM · LP" data-price="₩ 49,000" data-image="images/new-jimin-muse-vinyl.png" data-badge="IN STOCK" aria-label="View Jimin MUSE LP">
               <img src="images/new-jimin-muse-vinyl.png" alt="Jimin MUSE vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>MUSE</h3>
               <p class="new-release-artist">Jimin</p>
-              <p class="new-release-meta">SOLO ALBUM · LP</p>
+              <p class="new-release-meta">새로운 영감과 사랑을 노래한 솔로 앨범</p>
               <strong>₩ 49,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="Jung Kook GOLDEN Vinyl">
+          <article class="new-release-card is-cutout" data-tags="stock" data-search="jung kook golden solo album vinyl">
+            <button class="new-release-media" type="button" data-new-quickview data-product="GOLDEN" data-artist="Jung Kook" data-detail="SOLO ALBUM · VINYL" data-price="₩ 53,000" data-image="images/new-jungkook-golden-vinyl.jpg" data-badge="IN STOCK" aria-label="View Jung Kook GOLDEN Vinyl">
               <img src="images/new-jungkook-golden-vinyl.jpg" alt="Jung Kook GOLDEN vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>GOLDEN</h3>
               <p class="new-release-artist">Jung Kook</p>
-              <p class="new-release-meta">SOLO ALBUM · VINYL</p>
+              <p class="new-release-meta">정국의 황금빛 순간을 기록한 바이닐</p>
               <strong>₩ 53,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="TWICE With YOU-th Vinyl">
+          <article class="new-release-card is-cutout" data-tags="stock" data-search="twice with you-th sparkle vinyl lp">
+            <button class="new-release-media" type="button" data-new-quickview data-product="With YOU-th" data-artist="TWICE" data-detail="SPARKLE VINYL · LP" data-price="₩ 47,000" data-image="images/new-twice-with-youth-vinyl.png" data-badge="IN STOCK" aria-label="View TWICE With YOU-th Vinyl">
               <img src="images/new-twice-with-youth-vinyl.png" alt="TWICE With YOU-th sparkle vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>With YOU-th</h3>
               <p class="new-release-artist">TWICE</p>
-              <p class="new-release-meta">SPARKLE VINYL · LP</p>
+              <p class="new-release-meta">트와이스의 반짝이는 청춘을 담은 LP</p>
               <strong>₩ 47,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="Stray Kids KARMA Vinyl">
+          <article class="new-release-card is-cutout" data-tags="exclusive" data-search="stray kids karma graphite vinyl exclusive">
+            <button class="new-release-media" type="button" data-new-quickview data-product="KARMA" data-artist="Stray Kids" data-detail="GRAPHITE VINYL · EXCLUSIVE" data-price="₩ 49,000" data-image="images/new-straykids-karma-vinyl.png" data-badge="EXCLUSIVE" aria-label="View Stray Kids KARMA Vinyl">
+              <span class="new-release-badge">EXCLUSIVE</span>
               <img src="images/new-straykids-karma-vinyl.png" alt="Stray Kids KARMA graphite vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>KARMA</h3>
               <p class="new-release-artist">Stray Kids</p>
-              <p class="new-release-meta">GRAPHITE VINYL · EXCLUSIVE</p>
+              <p class="new-release-meta">강렬한 무드를 새긴 익스클루시브 바이닐</p>
               <strong>₩ 49,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="TWICE THIS IS FOR Vinyl">
+          <article class="new-release-card is-cutout" data-tags="preorder" data-search="twice this is for dragonfruit glitter vinyl">
+            <button class="new-release-media" type="button" data-new-quickview data-product="THIS IS FOR" data-artist="TWICE" data-detail="DRAGONFRUIT GLITTER VINYL" data-price="₩ 48,000" data-image="images/new-twice-this-is-for-vinyl.png" data-badge="PRE-ORDER" aria-label="View TWICE THIS IS FOR Vinyl">
+              <span class="new-release-badge">PRE-ORDER</span>
               <img src="images/new-twice-this-is-for-vinyl.png" alt="TWICE THIS IS FOR dragonfruit glitter vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>THIS IS FOR</h3>
               <p class="new-release-artist">TWICE</p>
-              <p class="new-release-meta">DRAGONFRUIT GLITTER VINYL</p>
+              <p class="new-release-meta">대담한 에너지를 담은 글리터 바이닐</p>
               <strong>₩ 48,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="TWICE STRATEGY Vinyl">
+          <article class="new-release-card is-cutout" data-tags="exclusive" data-search="twice strategy sugar frost vinyl exclusive">
+            <button class="new-release-media" type="button" data-new-quickview data-product="STRATEGY" data-artist="TWICE" data-detail="SUGAR FROST VINYL · EXCLUSIVE" data-price="₩ 48,000" data-image="images/new-twice-strategy-vinyl.png" data-badge="EXCLUSIVE" aria-label="View TWICE STRATEGY Vinyl">
+              <span class="new-release-badge">EXCLUSIVE</span>
               <img src="images/new-twice-strategy-vinyl.png" alt="TWICE STRATEGY sugar frost vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>STRATEGY</h3>
               <p class="new-release-artist">TWICE</p>
-              <p class="new-release-meta">SUGAR FROST VINYL · EXCLUSIVE</p>
+              <p class="new-release-meta">달콤하고 세련된 무드의 한정 바이닐</p>
               <strong>₩ 48,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="ROSÉ rosie Vampirehollie Clear Vinyl">
+          <article class="new-release-card is-cutout" data-tags="preorder" data-search="rose rosé rosie vampirehollie clear vinyl">
+            <button class="new-release-media" type="button" data-new-quickview data-product="rosie" data-artist="ROSÉ" data-detail="VAMPIREHOLLIE CLEAR VINYL" data-price="₩ 52,000" data-image="images/new-rose-rosie-clear-vinyl.png" data-badge="PRE-ORDER" aria-label="View ROSÉ rosie Vampirehollie Clear Vinyl">
+              <span class="new-release-badge">PRE-ORDER</span>
               <img src="images/new-rose-rosie-clear-vinyl.png" alt="ROSÉ rosie Vampirehollie clear vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>rosie</h3>
               <p class="new-release-artist">ROSÉ</p>
-              <p class="new-release-meta">VAMPIREHOLLIE CLEAR VINYL</p>
+              <p class="new-release-meta">로제의 솔직한 감성을 담은 클리어 바이닐</p>
               <strong>₩ 52,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="ROSÉ rosie Number One Girl Vinyl">
+          <article class="new-release-card is-cutout" data-tags="exclusive" data-search="rose rosé rosie number one girl red vinyl">
+            <button class="new-release-media" type="button" data-new-quickview data-product="rosie" data-artist="ROSÉ" data-detail="NUMBER ONE GIRL RED VINYL" data-price="₩ 52,000" data-image="images/new-rose-rosie-red-vinyl.png" data-badge="EXCLUSIVE" aria-label="View ROSÉ rosie Number One Girl Vinyl">
+              <span class="new-release-badge">EXCLUSIVE</span>
               <img src="images/new-rose-rosie-red-vinyl.png" alt="ROSÉ rosie Number One Girl red vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>rosie</h3>
               <p class="new-release-artist">ROSÉ</p>
-              <p class="new-release-meta">NUMBER ONE GIRL RED VINYL</p>
+              <p class="new-release-meta">깊은 보컬을 담은 레드 컬러 에디션</p>
               <strong>₩ 52,000</strong>
             </div>
           </article>
 
-          <article class="new-release-card is-cutout">
-            <a class="new-release-media" href="#" aria-label="LE SSERAFIM SPAGHETTI Vinyl">
+          <article class="new-release-card is-cutout" data-tags="exclusive" data-search="le sserafim spaghetti neon yellow vinyl exclusive">
+            <button class="new-release-media" type="button" data-new-quickview data-product="SPAGHETTI" data-artist="LE SSERAFIM" data-detail="NEON YELLOW VINYL · EXCLUSIVE" data-price="₩ 47,000" data-image="images/new-lesserafim-spaghetti-vinyl.jpg" data-badge="EXCLUSIVE" aria-label="View LE SSERAFIM SPAGHETTI Vinyl">
+              <span class="new-release-badge">EXCLUSIVE</span>
               <img src="images/new-lesserafim-spaghetti-vinyl.jpg" alt="LE SSERAFIM SPAGHETTI neon yellow vinyl LP" />
-            </a>
+            </button>
             <div class="new-release-copy">
               <h3>SPAGHETTI</h3>
               <p class="new-release-artist">LE SSERAFIM</p>
-              <p class="new-release-meta">NEON YELLOW VINYL · EXCLUSIVE</p>
+              <p class="new-release-meta">통통 튀는 매력을 담은 네온 한정판 LP</p>
               <strong>₩ 47,000</strong>
             </div>
           </article>
         </div>
+        <p class="new-empty" data-new-empty hidden>검색 조건에 맞는 신상품이 없습니다.</p>
 
-        <a class="new-more-link" href="#">View all <span aria-hidden="true">→</span></a>
+        <button class="new-more-link" type="button" data-new-reset>View all <span aria-hidden="true">→</span></button>
+      </section>
+
+      <section class="new-assurance" aria-label="ONVINYL shopping service">
+        <article id="newShipping">
+          <span class="material-symbols-outlined" aria-hidden="true">local_shipping</span>
+          <h2>Free delivery</h2>
+          <p>5만원 이상 주문은 무료 배송됩니다. LP 전용 패키지로 안전하게 보내드립니다.</p>
+        </article>
+        <article id="newReturns">
+          <span class="material-symbols-outlined" aria-hidden="true">published_with_changes</span>
+          <h2>Easy returns</h2>
+          <p>수령 후 7일 이내 교환 및 환불 신청이 가능합니다.</p>
+        </article>
+        <article>
+          <span class="material-symbols-outlined" aria-hidden="true">verified_user</span>
+          <h2>Collector packing</h2>
+          <p>모서리 보호와 충격 완충 포장으로 레코드 컨디션을 지킵니다.</p>
+        </article>
       </section>
     </main>
+
+    <aside class="new-cart-drawer" aria-label="Shopping cart" aria-hidden="true" data-new-cart>
+      <button class="new-panel-close" type="button" data-new-cart-close aria-label="Close cart"><span class="material-symbols-outlined">close</span></button>
+      <p class="new-eyebrow">YOUR BAG</p>
+      <h2>Cart</h2>
+      <p class="new-cart-summary"><strong data-cart-summary>2</strong> records selected</p>
+      <div class="new-cart-items" data-new-cart-items></div>
+      <div class="new-cart-total"><span>TOTAL</span><strong data-cart-total>₩ 101,000</strong></div>
+      <button class="new-checkout" type="button" data-new-checkout>CHECKOUT</button>
+    </aside>
+    <div class="new-overlay" data-new-overlay hidden></div>
+
+    <section class="new-quickview" role="dialog" aria-modal="true" aria-labelledby="newQuickTitle" aria-hidden="true" data-new-modal>
+      <button class="new-panel-close" type="button" data-new-close aria-label="Close product preview"><span class="material-symbols-outlined">close</span></button>
+      <div class="new-quickview-media"><img data-new-modal-image src="images/new-jennie-ruby-vinyl.png" alt="" /></div>
+      <div class="new-quickview-copy">
+        <p class="new-quickview-badge" data-new-modal-badge>PRE-ORDER</p>
+        <h2 id="newQuickTitle" data-new-modal-product>Ruby</h2>
+        <p class="new-quickview-artist" data-new-modal-artist>JENNIE</p>
+        <p class="new-quickview-detail" data-new-modal-detail>RUBY RED LP · OFFICIAL VINYL</p>
+        <strong data-new-modal-price>₩ 52,000</strong>
+        <button class="new-add-cart" type="button" data-new-add-cart>ADD TO CART</button>
+      </div>
+    </section>
 
     <footer class="site-footer">
       <div class="inner footer-grid">
         <div class="footer-brand"><img src="images/logo_.png" alt="ONVINYL" /><p>Music lives here.<br />K-Pop on vinyl.</p><div class="socials" aria-label="Social links">
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17" cy="7" r="1.2" /></svg></a>
-            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 7.5c.3-1.2 1.2-2 2.4-2.2 2-.3 8.2-.3 10.2 0 1.2.2 2.1 1 2.4 2.2.4 1.8.4 7.2 0 9-.3 1.2-1.2 2-2.4 2.2-2 .3-8.2.3-10.2 0-1.2-.2-2.1-1-2.4-2.2-.4-1.8-.4-7.2 0-9Z" /><path d="M10 9v6l5-3-5-3Z" /></svg></a>
-            <a href="#" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l14 16M19 4 5 20" /></svg></a>
-            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4v9.2a4.2 4.2 0 1 1-3.3-4.1" /><path d="M14 4c.7 2.8 2.5 4.5 5 5" /></svg></a>
+            <span aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17" cy="7" r="1.2" /></svg></span>
+            <span aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 7.5c.3-1.2 1.2-2 2.4-2.2 2-.3 8.2-.3 10.2 0 1.2.2 2.1 1 2.4 2.2.4 1.8.4 7.2 0 9-.3 1.2-1.2 2-2.4 2.2-2 .3-8.2.3-10.2 0-1.2-.2-2.1-1-2.4-2.2-.4-1.8-.4-7.2 0-9Z" /><path d="M10 9v6l5-3-5-3Z" /></svg></span>
+            <span aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l14 16M19 4 5 20" /></svg></span>
+            <span aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4v9.2a4.2 4.2 0 1 1-3.3-4.1" /><path d="M14 4c.7 2.8 2.5 4.5 5 5" /></svg></span>
           </div></div>
-        <div><h3>SHOP</h3><a href="new.html">New</a><a href="best.html">Best Sellers</a><a href="kpop.html">This Week: CORTIS</a><a href="#">Genre</a></div>
-        <div><h3>INFORMATION</h3><a href="#">About Us</a><a href="#">Notice</a><a href="#">FAQ</a><a href="#">Shipping</a><a href="#">Returns</a></div>
-        <div><h3>CUSTOMER</h3><a href="#">Contact</a><a href="#">1:1 문의</a><a href="#">이용 안내</a></div>
-        <div class="footer-newsletter"><h3>NEWSLETTER</h3><input type="email" placeholder="이메일 주소 입력" aria-label="Footer email" /><button type="button">구독하기</button></div>
+        <div><h3>SHOP</h3><a href="new.html">New</a><a href="best.html">Best Sellers</a><a href="kpop.html">This Week: CORTIS</a><a href="#newCatalog">Genre</a></div>
+        <div><h3>INFORMATION</h3><a href="about.html">About Us</a><a href="#newShipping">Shipping</a><a href="#newReturns">Returns</a></div>
+        <div><h3>CUSTOMER</h3><a href="mailto:hello@onvinyl.kr">Contact</a><a href="#newShipping">이용 안내</a></div>
+        <div class="footer-newsletter"><h3>NEWSLETTER</h3><form data-new-newsletter><input type="email" placeholder="이메일 주소 입력" aria-label="Footer email" required /><button type="submit">구독하기</button></form><p class="new-newsletter-status" data-new-newsletter-status aria-live="polite"></p></div>
       </div>
-      <div class="inner footer-bottom"><p>© ONVINYL. All rights reserved.</p><p><a href="#">이용약관</a><a href="#">개인정보처리방침</a></p></div>
+      <div class="inner footer-bottom"><p>© ONVINYL. All rights reserved.</p><p><a href="#newReturns">이용약관</a><a href="mailto:hello@onvinyl.kr">개인정보 문의</a></p></div>
     </footer>
-    <script src="script/action.js"></script>
+  <script src="script/action.js?v=shared-cart-20260525-4"></script>
   </body>
 </html>
