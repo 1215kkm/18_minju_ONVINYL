@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GENRE | ONVINYL</title>
+    <title>COLLECTION | ONVINYL</title>
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@32,300,0,0" />
-    <link rel="stylesheet" href="css/style.css?v=shared-cart-20260525-1" />
+    <link rel="stylesheet" href="css/style.css?v=genre-shop-20260526-1" />
   </head>
   <body class="genre-body">
     <header class="site-header">
@@ -17,7 +17,7 @@
           <div class="nav-menu-group">
             <a href="new.html">NEW</a>
             <a href="best.html">BEST SELLERS</a>
-            <a class="active" href="genre.html">GENRE</a>
+            <a class="active" href="genre.html">COLLECTION</a>
             <a href="about.html">ABOUT</a>
           </div>
         </nav>
@@ -30,8 +30,8 @@
     </header>
 
     <main class="genre-page">
-      <aside class="genre-rail" aria-label="Genre page sections">
-        <p>GENRE</p>
+      <aside class="genre-rail" aria-label="Collection page sections">
+        <p>COLLECTION</p>
         <nav>
           <a class="active" href="#genre-intro" aria-label="INTRO section" data-genre-rail-link="genre-intro"><i></i><span>INTRO</span></a>
           <a href="#genreCollection" aria-label="EDIT section" data-genre-rail-link="genreCollection"><i></i><span>EDIT</span></a>
@@ -40,11 +40,11 @@
         </nav>
       </aside>
 
-      <section class="genre-intro" id="genre-intro" data-genre-section aria-label="Genre introduction">
+      <section class="genre-intro" id="genre-intro" data-genre-section aria-label="Collection introduction">
         <div class="genre-intro-copy">
-          <p class="genre-eyebrow">BROWSE BY SOUND / K-POP VINYL</p>
-          <h2>GENRE</h2>
-          <p class="genre-lead">좋아하는 아티스트와 프레싱 무드로 바이닐을 탐색하세요. 솔로의 선명한 색감부터 그룹의 에너지까지, 소장하고 싶은 K-POP LP를 큐레이션했습니다.</p>
+          <p class="genre-eyebrow">CURATED / K-POP VINYL</p>
+          <h2>VINYL<br />EDIT</h2>
+          <p class="genre-lead">좋아하는 아티스트와 프레싱 무드로 바이닐을 탐색하세요. 솔로의 선명한 색감부터 그룹의 에너지까지, 소장하고 싶은 K-POP LP만 선별했습니다.</p>
         </div>
         <article class="genre-feature">
           <div class="genre-feature-media">
@@ -60,15 +60,15 @@
         </article>
       </section>
 
-      <nav class="genre-tabs" aria-label="Collection categories">
-        <a class="active" href="#genreCollection"><span>01</span>K-POP</a>
-        <a href="#solo-selection"><span>02</span>SOLO</a>
-        <a href="#group-selection"><span>03</span>GROUP</a>
-        <a href="#color-selection"><span>04</span>COLOR VINYL</a>
-        <a href="#limited-selection"><span>05</span>LIMITED</a>
-      </nav>
+      <div class="genre-tabs" aria-label="Filter vinyl selection">
+        <button class="active" type="button" data-genre-filter="all" aria-pressed="true"><span>01</span>K-POP</button>
+        <button type="button" data-genre-filter="solo" aria-pressed="false"><span>02</span>SOLO</button>
+        <button type="button" data-genre-filter="group" aria-pressed="false"><span>03</span>GROUP</button>
+        <button type="button" data-genre-filter="color" aria-pressed="false"><span>04</span>COLOR VINYL</button>
+        <button type="button" data-genre-filter="limited" aria-pressed="false"><span>05</span>LIMITED</button>
+      </div>
 
-      <section class="genre-edit" id="genreCollection" data-genre-section aria-label="Selected genre edit">
+      <section class="genre-edit" id="genreCollection" data-genre-section aria-label="Selected collection edit">
         <div class="genre-section-heading">
           <p class="genre-eyebrow">CURRENT EDIT / K-POP</p>
           <h2>색감과 사운드로 고른<br />이번 주의 바이닐</h2>
@@ -100,44 +100,49 @@
         </div>
       </section>
 
-      <section class="genre-products" id="group-selection" data-genre-section aria-label="Genre selected products">
+      <section class="genre-products" id="group-selection" data-genre-section aria-label="Collection selected products">
         <div class="genre-section-heading genre-products-heading">
           <div>
             <p class="genre-eyebrow">VINYL SELECTION</p>
             <h2>그룹과 솔로의 추천 LP</h2>
           </div>
-          <p>OFFICIAL VINYL EDITIONS</p>
+          <p><strong data-genre-result-count>4</strong> OFFICIAL VINYL EDITIONS</p>
         </div>
         <div class="genre-product-grid">
-          <article class="genre-product-card">
+          <article class="genre-product-card" data-genre-tags="group">
             <div class="genre-product-image"><img src="images/new-txt-sanctuary-vinyl.png" alt="TOMORROW X TOGETHER The Star Chapter Sanctuary vinyl" /></div>
             <p>GROUP / VINYL VER.</p>
             <h3>THE STAR CHAPTER:<br />SANCTUARY (LP)</h3>
             <span>TOMORROW X TOGETHER</span>
             <strong>₩ 48,000</strong>
+            <button class="genre-add-cart" type="button" data-genre-add-cart data-product="THE STAR CHAPTER: SANCTUARY" data-artist="TOMORROW X TOGETHER" data-price="48000" aria-label="Add THE STAR CHAPTER SANCTUARY to bag">ADD TO BAG</button>
           </article>
-          <article class="genre-product-card">
+          <article class="genre-product-card" data-genre-tags="solo color">
             <div class="genre-product-image"><img src="images/new-jungkook-golden-vinyl.jpg" alt="Jung Kook GOLDEN vinyl" /></div>
             <p>SOLO / GOLD VINYL</p>
             <h3>GOLDEN (LP)</h3>
             <span>Jung Kook</span>
             <strong>₩ 53,000</strong>
+            <button class="genre-add-cart" type="button" data-genre-add-cart data-product="GOLDEN" data-artist="Jung Kook" data-price="53000" aria-label="Add GOLDEN to bag">ADD TO BAG</button>
           </article>
-          <article class="genre-product-card">
+          <article class="genre-product-card" data-genre-tags="group color limited">
             <div class="genre-product-image"><img src="images/new-twice-strategy-vinyl.png" alt="TWICE STRATEGY vinyl" /></div>
             <p>GROUP / SUGAR FROST VINYL</p>
             <h3>STRATEGY (LP)</h3>
             <span>TWICE</span>
             <strong>₩ 48,000</strong>
+            <button class="genre-add-cart" type="button" data-genre-add-cart data-product="STRATEGY" data-artist="TWICE" data-price="48000" aria-label="Add STRATEGY to bag">ADD TO BAG</button>
           </article>
-          <article class="genre-product-card">
+          <article class="genre-product-card" data-genre-tags="group limited">
             <div class="genre-product-image"><img src="images/new-lesserafim-easy-crazy-hot-vinyl.jpg" alt="LE SSERAFIM EASY-CRAZY-HOT special vinyl" /></div>
             <p>GROUP / SPECIAL VINYL</p>
             <h3>EASY-CRAZY-HOT<br />(LP)</h3>
             <span>LE SSERAFIM</span>
             <strong>₩ 49,800</strong>
+            <button class="genre-add-cart" type="button" data-genre-add-cart data-product="EASY-CRAZY-HOT" data-artist="LE SSERAFIM" data-price="49800" aria-label="Add EASY-CRAZY-HOT to bag">ADD TO BAG</button>
           </article>
         </div>
+        <p class="genre-empty" data-genre-empty hidden>선택한 카테고리의 바이닐이 없습니다.</p>
       </section>
 
       <section class="genre-paths" id="limited-selection" data-genre-section aria-label="Curated collection paths">
@@ -156,13 +161,13 @@
     <footer class="site-footer">
       <div class="inner footer-grid">
         <div class="footer-brand"><img src="images/logo_.png" alt="ONVINYL" /><p>Music lives here.<br />K-Pop on vinyl.</p></div>
-        <div><h3>SHOP</h3><a href="new.html">New</a><a href="best.html">Best Sellers</a><a href="genre.html">Genre</a><a href="kpop.html">This Week: CORTIS</a></div>
+        <div><h3>SHOP</h3><a href="new.html">New</a><a href="best.html">Best Sellers</a><a href="genre.html">Collection</a><a href="kpop.html">This Week: CORTIS</a></div>
         <div><h3>INFORMATION</h3><a href="about.html">About Us</a><a href="index.html#collection-support">Shipping</a><a href="index.html#collection-support">Returns</a></div>
         <div><h3>CUSTOMER</h3><a href="mailto:hello@onvinyl.kr">Contact</a><a href="index.html#collection-support">이용 안내</a></div>
-        <div class="footer-newsletter"><h3>NEWSLETTER</h3><input type="email" placeholder="이메일 주소 입력" aria-label="Footer email" /><button type="button">구독하기</button></div>
+        <div class="footer-newsletter"><h3>NEWSLETTER</h3><form data-site-newsletter><input type="email" placeholder="이메일 주소 입력" aria-label="Footer email" required /><button type="submit">구독하기</button></form><p class="new-newsletter-status" data-site-newsletter-status aria-live="polite"></p></div>
       </div>
       <div class="inner footer-bottom"><p>© ONVINYL. All rights reserved.</p><p><a href="mailto:hello@onvinyl.kr">개인정보 문의</a></p></div>
     </footer>
-  <script src="script/action.js?v=shared-cart-20260525-4"></script>
+  <script src="script/action.js?v=genre-shop-20260526-1"></script>
   </body>
 </html>

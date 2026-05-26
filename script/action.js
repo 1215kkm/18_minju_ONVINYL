@@ -230,13 +230,17 @@ if (document.body.classList.contains('new-body')) {
     openNewPanel(newCart);
   });
 
-  document.querySelector('[data-new-newsletter]')?.addEventListener('submit', () => {
-    const status = document.querySelector('[data-new-newsletter-status]');
-    if (status) status.textContent = '구독 신청이 완료되었습니다.';
-  });
-
   updateNewResults();
 }
+
+document.querySelectorAll('[data-site-newsletter]').forEach((form) => {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const status = form.parentElement?.querySelector('[data-site-newsletter-status]');
+    if (status) status.textContent = '구독 신청이 완료되었습니다.';
+    form.reset();
+  });
+});
 
 if (supportsCart && newCart) {
   document.querySelectorAll('[data-cart-toggle]').forEach((button) => {
@@ -271,6 +275,64 @@ if (supportsCart && newCart) {
   });
 
   renderNewCart();
+}
+
+const genreCards = document.querySelectorAll('.genre-product-card[data-genre-tags]');
+const genreFilters = document.querySelectorAll('[data-genre-filter]');
+const genreResultCount = document.querySelector('[data-genre-result-count]');
+const genreEmpty = document.querySelector('[data-genre-empty]');
+const genreProducts = document.querySelector('#group-selection');
+
+if (document.body.classList.contains('genre-body') && genreCards.length && genreFilters.length) {
+  const updateGenreProducts = (filter) => {
+    let visibleCount = 0;
+    genreCards.forEach((card) => {
+      const isVisible = filter === 'all' || (card.dataset.genreTags || '').split(' ').includes(filter);
+      card.hidden = !isVisible;
+      if (isVisible) visibleCount += 1;
+    });
+    if (genreResultCount) genreResultCount.textContent = String(visibleCount);
+    if (genreEmpty) genreEmpty.hidden = visibleCount !== 0;
+  };
+
+  genreFilters.forEach((button) => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.genreFilter || 'all';
+      genreFilters.forEach((item) => {
+        const isActive = item === button;
+        item.classList.toggle('active', isActive);
+        item.setAttribute('aria-pressed', String(isActive));
+      });
+      updateGenreProducts(filter);
+      genreProducts?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  document.querySelectorAll('[data-genre-add-cart]').forEach((button) => {
+    button.addEventListener('click', () => {
+      newCartState.push({
+        product: button.dataset.product || '',
+        artist: button.dataset.artist || '',
+        price: Number(button.dataset.price || 0),
+      });
+      renderNewCart();
+      openNewPanel(newCart);
+    });
+  });
+
+  const alignGenreHashTarget = () => {
+    const target = document.getElementById(window.location.hash.slice(1));
+    if (target?.closest('.genre-page')) {
+      target.scrollIntoView({ block: 'start' });
+    }
+  };
+
+  if (window.location.hash) {
+    window.addEventListener('load', alignGenreHashTarget, { once: true });
+  }
+  window.addEventListener('hashchange', alignGenreHashTarget);
+
+  updateGenreProducts('all');
 }
 
 document.querySelectorAll('form').forEach((form) => {
