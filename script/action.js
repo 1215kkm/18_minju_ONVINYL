@@ -1,18 +1,10 @@
-const paginationButtons = document.querySelectorAll('.hero-pagination button');
-
 const syncHeaderScrollState = () => {
-  document.body.classList.toggle('is-scrolled', window.scrollY > 8);
+  const threshold = document.body.classList.contains('home-body') ? 726 : 8;
+  document.body.classList.toggle('is-scrolled', window.scrollY > threshold);
 };
 
 syncHeaderScrollState();
 window.addEventListener('scroll', syncHeaderScrollState, { passive: true });
-
-paginationButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    paginationButtons.forEach((item) => item.classList.remove('active'));
-    button.classList.add('active');
-  });
-});
 
 const newCatalog = document.querySelector('#newCatalog');
 const newCards = document.querySelectorAll('.new-release-card[data-tags]');
@@ -549,4 +541,103 @@ if (document.body.classList.contains('genre-body') && genreSections.length && ge
   });
 
   genreSections.forEach((section) => genreSectionObserver.observe(section));
+}
+
+const heroBgIframe = document.getElementById('heroBgIframe');
+if (heroBgIframe) {
+  const isReload = performance.getEntriesByType('navigation')[0]?.type === 'reload';
+  if (isReload) sessionStorage.removeItem('heroVideoTime');
+
+  const savedTime = sessionStorage.getItem('heroVideoTime');
+  const startTime = parseInt(savedTime || '5');
+  const isReturning = savedTime !== null;
+
+  const heroUiCover = document.querySelector('.hero-ui-cover');
+  if (heroUiCover) {
+    if (isReturning) {
+      heroUiCover.classList.add('is-gone');
+    } else {
+      setTimeout(() => heroUiCover.classList.add('is-gone'), 5000);
+    }
+  }
+  heroBgIframe.src = `https://www.youtube.com/embed/WXS-o57VJ5w?autoplay=1&mute=1&loop=1&playlist=WXS-o57VJ5w&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&start=${startTime}`;
+
+  const pageLoadTime = Date.now();
+  window.addEventListener('pagehide', () => {
+    const elapsed = Math.floor((Date.now() - pageLoadTime) / 1000);
+    sessionStorage.setItem('heroVideoTime', startTime + elapsed);
+  });
+}
+
+if (window.parent !== window) {
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (href && (href === 'index.html' || href.startsWith('index.html#') || href === './')) {
+      e.preventDefault();
+      window.parent.postMessage({ type: 'pjax-close' }, '*');
+    }
+  }, true);
+} else if (document.body.classList.contains('home-body')) {
+  const overlay = document.createElement('div');
+  overlay.id = 'subpageOverlay';
+  const frame = document.createElement('iframe');
+  frame.id = 'subpageFrame';
+  frame.title = 'Subpage';
+  overlay.appendChild(frame);
+  document.body.appendChild(overlay);
+
+  let isOverlayOpen = false;
+
+  const openSubpage = (url) => {
+    frame.src = url;
+    overlay.classList.add('is-open');
+    isOverlayOpen = true;
+    history.pushState({ pjaxSubpage: url }, '', url);
+  };
+
+  const closeSubpage = () => {
+    overlay.classList.remove('is-open');
+    isOverlayOpen = false;
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    setTimeout(() => { frame.src = 'about:blank'; }, 250);
+  };
+
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || !href.includes('.html') || href.startsWith('index.html') || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto')) return;
+    e.preventDefault();
+    openSubpage(href);
+  });
+
+  window.addEventListener('popstate', (e) => {
+    if (isOverlayOpen && !e.state?.pjaxSubpage) {
+      closeSubpage();
+    } else if (!isOverlayOpen && e.state?.pjaxSubpage) {
+      openSubpage(e.state.pjaxSubpage);
+    }
+  });
+
+  frame.addEventListener('load', () => {
+    if (!isOverlayOpen) return;
+    try {
+      const loc = frame.contentWindow?.location;
+      if (loc && loc.href !== 'about:blank') {
+        const fname = loc.pathname.split('/').pop();
+        if (fname && !fname.startsWith('index')) {
+          history.replaceState({ pjaxSubpage: fname }, '', fname);
+        }
+      }
+    } catch { /* cross-origin: skip */ }
+  });
+
+  window.addEventListener('message', (e) => {
+    if (e.data?.type === 'pjax-close' && isOverlayOpen) {
+      closeSubpage();
+      history.back();
+    }
+  });
 }
