@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@32,300,0,0" />
     <link rel="stylesheet" href="css/style.css?v=shared-cart-20260525-1" />
   </head>
-  <body>
+  <body class="home-body">
     <header class="site-header">
       <div class="inner header-inner">
         <h1 class="logo-wrap"><img src="images/logo_.png" alt="ONVINYL" class="logo-img" /></h1>
@@ -30,8 +30,16 @@
     </header>
 
     <section class="hero">
-      <div class="hero-blank" aria-label="Hero media placeholder"></div>
+      <div class="hero-video-bg">
+        <iframe
+          id="heroBgIframe"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          title="Hero background video"
+        ></iframe>
+      </div>
       <div class="hero-overlay"></div>
+      <div class="hero-ui-cover"></div>
       <div class="inner hero-inner">
         <div class="hero-copy">
           <h2>Music lives here.<br />K-Pop on <span>vinyl</span>.</h2>
@@ -41,15 +49,6 @@
             <a class="btn btn-ghost" href="best.html">EXPLORE</a>
           </div>
         </div>
-        <button class="play-video" type="button" aria-label="Play video">
-          <span class="play-circle"></span>
-          <strong>PLAY VIDEO</strong>
-        </button>
-      </div>
-      <div class="hero-pagination" aria-label="Hero pagination">
-        <button class="active" type="button">01</button>
-        <button type="button">02</button>
-        <button type="button">03</button>
       </div>
     </section>
 
@@ -165,6 +164,12 @@
       </div>
       <div class="inner footer-bottom"><p>© ONVINYL. All rights reserved.</p><p><a href="#">이용약관</a><a href="#">개인정보처리방침</a></p></div>
     </footer>
+  <div class="video-modal" id="videoModal" hidden>
+    <button class="video-modal-close" id="videoModalClose" aria-label="닫기">&times;</button>
+    <div class="video-modal-inner">
+      <div class="video-modal-frame" id="videoModalFrame"></div>
+    </div>
+  </div>
   <script src="script/action.js?v=shared-cart-20260525-4"></script>
   </body>
 </html>
