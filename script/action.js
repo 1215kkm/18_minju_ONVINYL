@@ -543,30 +543,12 @@ if (document.body.classList.contains('genre-body') && genreSections.length && ge
   genreSections.forEach((section) => genreSectionObserver.observe(section));
 }
 
-const heroBgIframe = document.getElementById('heroBgIframe');
-if (heroBgIframe) {
-  const isReload = performance.getEntriesByType('navigation')[0]?.type === 'reload';
-  if (isReload) sessionStorage.removeItem('heroVideoTime');
-
-  const savedTime = sessionStorage.getItem('heroVideoTime');
-  const startTime = parseInt(savedTime || '5');
-  const isReturning = savedTime !== null;
-
+const heroBgVideo = document.getElementById('heroBgVideo');
+if (heroBgVideo) {
   const heroUiCover = document.querySelector('.hero-ui-cover');
-  if (heroUiCover) {
-    if (isReturning) {
-      heroUiCover.classList.add('is-gone');
-    } else {
-      setTimeout(() => heroUiCover.classList.add('is-gone'), 5000);
-    }
-  }
-  heroBgIframe.src = `https://www.youtube.com/embed/WXS-o57VJ5w?autoplay=1&mute=1&loop=1&playlist=WXS-o57VJ5w&controls=0&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&start=${startTime}`;
-
-  const pageLoadTime = Date.now();
-  window.addEventListener('pagehide', () => {
-    const elapsed = Math.floor((Date.now() - pageLoadTime) / 1000);
-    sessionStorage.setItem('heroVideoTime', startTime + elapsed);
-  });
+  if (heroUiCover) setTimeout(() => heroUiCover.classList.add('is-gone'), 1000);
+  heroBgVideo.currentTime = 20;
+  heroBgVideo.play();
 }
 
 if (window.parent !== window) {
