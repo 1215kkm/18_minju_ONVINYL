@@ -547,7 +547,6 @@ const heroBgVideo = document.getElementById('heroBgVideo');
 if (heroBgVideo) {
   const heroUiCover = document.querySelector('.hero-ui-cover');
   if (heroUiCover) setTimeout(() => heroUiCover.classList.add('is-gone'), 1000);
-  heroBgVideo.currentTime = 20;
   heroBgVideo.play();
 }
 
