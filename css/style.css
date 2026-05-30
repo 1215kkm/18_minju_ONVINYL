@@ -3521,7 +3521,12 @@ body.has-new-panel {
   .event-strip-main p { font-size: 13px; }
   .event-strip-button { width: max-content; min-width: 132px; height: 40px; }
   .event-strip img { display: none; }
-  .product-row, .arrival-row, .about-newsletter, .footer-grid { grid-template-columns: 1fr; }
+  .product-row, .arrival-row, .about-newsletter { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 18px; }
+  .footer-brand, .footer-newsletter { grid-column: 1 / -1; }
+  .site-footer { padding: 24px 0 12px; }
+  .site-footer h3 { margin-bottom: 7px; }
+  .footer-brand p { margin: 10px 0 12px; }
   .featured-release { gap: 28px; scroll-margin-top: 168px; margin-top: 54px; padding: 26px 20px; }
   .featured-release-eyebrow { margin-bottom: 22px; }
   .featured-release-artist { margin-bottom: 12px; font-size: 43px; }
