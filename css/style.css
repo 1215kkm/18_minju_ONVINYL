@@ -4819,7 +4819,13 @@ body.has-new-panel {
 }
 
 .genre-product-card {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
+}
+
+.genre-add-cart {
+  margin-top: auto;
 }
 
 .genre-product-card[hidden] {
@@ -5174,11 +5180,23 @@ body.has-new-panel {
   }
 
   .genre-path-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
 
   .genre-path-grid article {
+    flex: 0 0 220px;
     min-height: 0;
+    scroll-snap-align: start;
+  }
+
+  .genre-path-img {
+    aspect-ratio: 3/2;
   }
 }
 
