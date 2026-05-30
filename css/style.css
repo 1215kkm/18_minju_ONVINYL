@@ -3436,16 +3436,19 @@ body.has-new-panel {
   .detail-body .breadcrumb { height: auto; }
   .detail-body .breadcrumb-inner { min-height: 42px; gap: 9px; overflow-x: auto; font-size: 11px; white-space: nowrap; }
   .detail-body .product-hero { padding-top: 24px; }
-  .detail-body .main-product-blank { height: 340px; padding: 28px; }
+  .detail-body .main-product-blank { height: auto; aspect-ratio: 1 / 1; padding: 28px; }
   .detail-body .main-product-blank img { max-width: 84%; max-height: 84%; }
-  .detail-body .gallery-arrow { top: 205px; }
+  .detail-body .gallery-arrow { top: 50%; transform: translateY(-50%); }
   .detail-body .thumb-row { gap: 10px; margin-top: 12px; }
   .detail-body .thumb { height: auto; padding: 8px 10px; }
   .detail-body .product-info h2 { font-size: 23px; }
   .detail-body .detail-price { margin-bottom: 28px; font-size: 21px; }
   .detail-body .product-meta { gap: 14px; margin-bottom: 30px; }
-  .detail-body .buy-controls, .detail-body .purchase-actions { grid-template-columns: 1fr; }
-  .detail-body .wish-btn { margin-left: 0; }
+  .detail-body .buy-controls { grid-template-columns: 1fr auto; grid-template-areas: "qty wish" "stock stock"; }
+  .detail-body .buy-controls .quantity { grid-area: qty; }
+  .detail-body .buy-controls p { grid-area: stock; }
+  .detail-body .buy-controls .wish-btn { grid-area: wish; margin-left: 0; }
+  .detail-body .purchase-actions { grid-template-columns: 1.1fr .9fr; }
   .detail-body .product-tabs { padding-top: 50px; }
   .detail-body .tab-nav { grid-template-columns: repeat(5, minmax(112px, 1fr)); overflow-x: auto; }
   .detail-body .track-list { grid-template-columns: 1fr; gap: 42px; padding: 38px 12px; }

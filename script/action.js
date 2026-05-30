@@ -336,27 +336,42 @@ document.querySelectorAll('form').forEach((form) => {
 const mainProductImage = document.querySelector('#mainProductImage');
 const productThumbs = document.querySelectorAll('.thumb[data-main]');
 
+function activateThumb(thumb) {
+  const nextImage = thumb.dataset.main;
+  const nextAlt = thumb.querySelector('img')?.alt || mainProductImage?.alt || '';
+  if (!mainProductImage || !nextImage) return;
+  productThumbs.forEach((item) => item.classList.remove('active'));
+  thumb.classList.add('active');
+  mainProductImage.style.opacity = '0';
+  mainProductImage.style.transform = 'scale(.985)';
+  window.setTimeout(() => {
+    mainProductImage.src = nextImage;
+    mainProductImage.alt = nextAlt;
+    mainProductImage.style.opacity = '1';
+    mainProductImage.style.transform = 'scale(1)';
+  }, 120);
+}
+
 productThumbs.forEach((thumb) => {
-  thumb.addEventListener('click', () => {
-    const nextImage = thumb.dataset.main;
-    const nextAlt = thumb.querySelector('img')?.alt || mainProductImage?.alt || '';
-
-    if (!mainProductImage || !nextImage) return;
-
-    productThumbs.forEach((item) => item.classList.remove('active'));
-    thumb.classList.add('active');
-
-    mainProductImage.style.opacity = '0';
-    mainProductImage.style.transform = 'scale(.985)';
-
-    window.setTimeout(() => {
-      mainProductImage.src = nextImage;
-      mainProductImage.alt = nextAlt;
-      mainProductImage.style.opacity = '1';
-      mainProductImage.style.transform = 'scale(1)';
-    }, 120);
-  });
+  thumb.addEventListener('click', () => activateThumb(thumb));
 });
+
+const galleryPrev = document.querySelector('.gallery-prev');
+const galleryNext = document.querySelector('.gallery-next');
+const thumbArray = Array.from(productThumbs);
+
+if (galleryPrev && galleryNext && thumbArray.length) {
+  galleryPrev.addEventListener('click', () => {
+    const current = thumbArray.findIndex((t) => t.classList.contains('active'));
+    const prev = (current - 1 + thumbArray.length) % thumbArray.length;
+    activateThumb(thumbArray[prev]);
+  });
+  galleryNext.addEventListener('click', () => {
+    const current = thumbArray.findIndex((t) => t.classList.contains('active'));
+    const next = (current + 1) % thumbArray.length;
+    activateThumb(thumbArray[next]);
+  });
+}
 
 const kpopHero = document.querySelector('.kpop-hero');
 const kpopVersionButtons = document.querySelectorAll('[data-kpop-version]');
