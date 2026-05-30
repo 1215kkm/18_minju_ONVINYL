@@ -543,6 +543,7 @@ if (document.body.classList.contains('genre-body') && genreSections.length && ge
   genreSections.forEach((section) => genreSectionObserver.observe(section));
 }
 
+
 const heroBgVideo = document.getElementById('heroBgVideo');
 if (heroBgVideo) {
   const heroUiCover = document.querySelector('.hero-ui-cover');
