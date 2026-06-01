@@ -95,14 +95,21 @@ body.is-scrolled:not(.kpop-body) .site-header {
   transform: translateX(3px);
 }
 .header-icons { display: flex; align-items: center; justify-content: flex-end; gap: 22px; margin-left: auto; }
+.hamburger-btn { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 34px; height: 34px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.hamburger-btn span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: transform .25s ease, opacity .25s ease; }
+.nav-open .hamburger-btn span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-open .hamburger-btn span:nth-child(2) { opacity: 0; }
+.nav-open .hamburger-btn span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-nav-overlay { display: none; position: fixed; inset: 0; z-index: 19; background: rgba(0,0,0,.4); }
+.nav-open .mobile-nav-overlay { display: block; }
 .icon-btn { position: relative; display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 0; background: transparent; color: var(--text); line-height: 1; }
 .material-symbols-outlined { display: block; font-family: 'Material Symbols Outlined'; font-size: 32px; font-weight: 300; line-height: 1; font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 32; }
 .bag-icon .material-symbols-outlined { font-size: 32px; }
 .bag-icon em { position: absolute; right: -9px; top: -12px; z-index: 1; display: grid; place-items: center; width: 27px; height: 27px; border-radius: 50%; background: var(--red); color: var(--bg); font-style: normal; font-size: 13px; font-weight: 700; line-height: 1; }
 
-.hero { position: relative; height: 808px; overflow: hidden; background: var(--text); }
+.hero { position: relative; height: 100vh; overflow: hidden; background: var(--text); }
 .hero-video-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
-.hero-bg-video { position: absolute; top: 50%; left: 50%; width: max(100vw, calc(808px * 16 / 9)); height: max(calc(100vw * 9 / 16), 808px); transform: translate(-50%, -50%); pointer-events: none; object-fit: cover; opacity: 0; transition: opacity 1s ease; }
+.hero-bg-video { position: absolute; top: 50%; left: 50%; width: max(100vw, calc(100vh * 16 / 9)); height: max(calc(100vw * 9 / 16), 100vh); transform: translate(-50%, -50%); pointer-events: none; object-fit: cover; opacity: 0; transition: opacity 1s ease; }
 .hero-bg-video--active { opacity: 1; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,.72) 0%, rgba(0,0,0,.5) 55%, rgba(0,0,0,.32) 100%); z-index: 1; }
 .hero-ui-cover { display: none; }
@@ -3419,21 +3426,29 @@ body.has-new-panel {
 }
 
 @media (max-width: 760px) {
-  .site-header { height: auto; }
-  .header-inner { min-height: 92px; flex-wrap: wrap; padding: 18px 0; }
-  .main-nav {
-    position: static;
-    order: 3;
-    transform: none;
-    width: 100%;
-    gap: clamp(13px, 3.7vw, 24px);
-    overflow-x: auto;
-    justify-content: flex-start;
-    padding: 2px 0;
-    font-size: 11px;
-    scrollbar-width: none;
+  .site-header { height: 64px; }
+  .header-inner { height: 100%; flex-wrap: nowrap; padding: 0; }
+  .hamburger-btn { display: flex; }
+  .main-nav { display: none; }
+  .mobile-nav-panel {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 200;
+    transform: translateX(100%);
+    transition: transform .3s ease;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 40px 60px;
+    overflow-y: auto;
   }
-  .main-nav::-webkit-scrollbar { display: none; }
+  .nav-open .mobile-nav-panel { transform: translateX(0); }
+  .mobile-nav-overlay { z-index: 199; }
+  .mobile-nav-links { display: flex; flex-direction: column; gap: 0; }
+  .mobile-nav-links a { display: block; padding: 18px 0; border-bottom: 1px solid var(--line); font-size: 26px; font-weight: 800; color: var(--text); text-decoration: none; }
+  .mobile-nav-links a:hover { color: var(--red); }
+  .mobile-nav-close { position: absolute; top: 20px; right: 24px; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: var(--text); cursor: pointer; }
   .nav-menu-group { gap: clamp(17px, 5vw, 26px); padding-left: 17px; }
   .main-nav .nav-artist-feature { gap: 4px; padding: 0 22px 5px 0; }
   .main-nav .nav-artist-feature small { font-size: 7px; letter-spacing: .11em; }
@@ -3508,7 +3523,7 @@ body.has-new-panel {
   .goods-visual { position: relative; width: 100%; height: 420px; min-height: 0; box-shadow: none; transform: none; }
   .goods-visual-main { min-height: 0; }
   .kpop-package-section { gap: 32px; padding-bottom: 78px; }
-  .hero { height: 680px; }
+  .hero { height: 100svh; }
   .hero-inner { grid-template-columns: 1fr; align-content: center; }
   .play-video { display: none; }
   .hero-copy h2 { font-size: 43px; }
