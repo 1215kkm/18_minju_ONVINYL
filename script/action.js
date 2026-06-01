@@ -1,3 +1,47 @@
+// Hamburger menu
+const hamburgerBtn = document.querySelector('.hamburger-btn');
+if (hamburgerBtn) {
+  // backdrop-filter on header traps fixed children — build panel outside header
+  const navLinks = document.querySelector('.main-nav .nav-menu-group');
+  const panel = document.createElement('div');
+  panel.className = 'mobile-nav-panel';
+  panel.setAttribute('aria-hidden', 'true');
+  const overlay = document.createElement('div');
+  overlay.className = 'mobile-nav-overlay';
+  document.body.appendChild(panel);
+  document.body.appendChild(overlay);
+
+  const openNav = () => {
+    document.body.classList.add('nav-open');
+    panel.setAttribute('aria-hidden', 'false');
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
+    hamburgerBtn.setAttribute('aria-label', '메뉴 닫기');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeNav = () => {
+    document.body.classList.remove('nav-open');
+    panel.setAttribute('aria-hidden', 'true');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    hamburgerBtn.setAttribute('aria-label', '메뉴 열기');
+    document.body.style.overflow = '';
+  };
+
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'mobile-nav-close';
+  closeBtn.setAttribute('aria-label', '메뉴 닫기');
+  closeBtn.innerHTML = '<span class="material-symbols-outlined">close</span>';
+  panel.appendChild(closeBtn);
+  if (navLinks) panel.insertAdjacentHTML('beforeend', `<nav class="mobile-nav-links">${navLinks.innerHTML}</nav>`);
+
+  hamburgerBtn.addEventListener('click', () =>
+    document.body.classList.contains('nav-open') ? closeNav() : openNav()
+  );
+  closeBtn.addEventListener('click', closeNav);
+  overlay.addEventListener('click', closeNav);
+  document.addEventListener('keydown', e => e.key === 'Escape' && closeNav());
+  panel.addEventListener('click', e => { if (e.target.tagName === 'A') closeNav(); });
+}
+
 const syncHeaderScrollState = () => {
   const threshold = document.body.classList.contains('home-body') ? 726 : 8;
   document.body.classList.toggle('is-scrolled', window.scrollY > threshold);
