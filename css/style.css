@@ -3361,6 +3361,7 @@ body.has-new-panel {
   .detail-body .recommend-row { gap: 28px; }
   .detail-body .recommend-prev { left: 0; }
   .detail-body .recommend-next { right: 0; }
+  .product-row { grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .kpop-event-summary { grid-template-columns: 1fr; gap: 18px; }
   .kpop-event-summary dl { justify-content: start; }
   .archive-hero-image { width: 86vw; height: min(58vh, 620px); }
@@ -3524,11 +3525,12 @@ body.has-new-panel {
   .goods-visual-main { min-height: 0; }
   .kpop-package-section { gap: 32px; padding-bottom: 78px; }
   .hero { height: 100svh; }
-  .hero-inner { grid-template-columns: 1fr; align-content: center; }
+  .hero-inner { grid-template-columns: 1fr; align-content: center; padding-top: 80px; }
   .play-video { display: none; }
   .hero-copy h2 { font-size: 43px; }
   .hero-copy p { font-size: 18px; }
-  .hero-actions { flex-wrap: wrap; margin-top: 52px; }
+  .hero-actions { flex-direction: column; gap: 14px; margin-top: 52px; }
+  .hero-actions .btn { width: 100%; max-width: 320px; height: 56px; font-size: 16px; }
   .btn { width: 150px; height: 56px; font-size: 16px; }
   .hero-pagination { bottom: 34px; }
   .event-strip-inner { grid-template-columns: 1fr; gap: 18px; min-height: 0; padding-top: 24px; padding-bottom: 24px; }
@@ -3536,12 +3538,22 @@ body.has-new-panel {
   .event-strip-main p { font-size: 13px; }
   .event-strip-button { width: max-content; min-width: 132px; height: 40px; }
   .event-strip img { display: none; }
-  .product-row, .arrival-row, .about-newsletter { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 18px; }
-  .footer-brand, .footer-newsletter { grid-column: 1 / -1; }
-  .site-footer { padding: 24px 0 12px; }
-  .site-footer h3 { margin-bottom: 7px; }
-  .footer-brand p { margin: 10px 0 12px; }
+  .product-row { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .arrival-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 56px 16px; }
+  .arrival-row .upcoming-card { display: none; }
+  .arrival-row .arrival-card:nth-child(2) { grid-column: 1 / -1; }
+  .about-newsletter { grid-template-columns: 1fr; }
+  .site-footer { padding: 20px 0 10px; }
+  .footer-grid { grid-template-columns: repeat(3, 1fr); gap: 20px 12px; }
+  .footer-brand { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; }
+  .footer-brand p { display: none; }
+  .footer-brand img { width: 80px; }
+  .footer-newsletter { grid-column: 1 / -1; display: flex; align-items: center; gap: 8px; }
+  .footer-newsletter h3 { display: none; }
+  .footer-newsletter input { flex: 1; height: 36px; }
+  .footer-newsletter button { flex-shrink: 0; width: auto; padding: 0 14px; height: 36px; }
+  .site-footer h3 { margin-bottom: 6px; font-size: 10px; }
+  .site-footer a { font-size: 11px; margin-bottom: 3px; }
   .featured-release { gap: 28px; scroll-margin-top: 168px; margin-top: 54px; padding: 26px 20px; }
   .featured-release-eyebrow { margin-bottom: 22px; }
   .featured-release-artist { margin-bottom: 12px; font-size: 43px; }
@@ -3550,7 +3562,9 @@ body.has-new-panel {
   .featured-release dl { gap: 14px; margin-bottom: 26px; }
   .featured-release-link { height: 44px; padding: 0 18px; }
   .featured-release-media img { aspect-ratio: .98 / 1; object-position: center; }
-  .product-card img, .arrival-card img { height: auto; }
+  .product-card img { height: auto; margin-bottom: 14px; }
+  .arrival-card img { height: 200px; object-fit: cover; object-position: center; margin-bottom: 14px; }
+  .arrival-row .arrival-card:nth-child(2) img { height: 260px; }
   .section-head { align-items: flex-start; }
   .collection-support { grid-template-columns: 1fr; }
   .featured-release + .collection-support { margin-top: 56px; }
@@ -3691,7 +3705,8 @@ body.has-new-panel {
   .section { padding-top: 50px; }
   .section-head h2 { font-size: 28px; }
   .product-card h3, .arrival-card h3 { min-height: auto; }
-  .arrival-card { padding-left: 18px; }
+  .arrival-card { padding-left: 0; border-left: 0; }
+  .arrival-card .date-line { margin-bottom: 12px; }
   .about-card, .newsletter-card { padding: 26px 20px; }
   .newsletter-card { padding: 0; }
   .newsletter-card form { flex-direction: column; }
