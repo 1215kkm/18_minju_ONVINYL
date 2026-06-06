@@ -3427,7 +3427,7 @@ body.has-new-panel {
   .new-more-link { position: static; margin-top: 34px; }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 1024px) {
   .site-header { height: 64px; }
   .header-inner { height: 100%; flex-wrap: nowrap; padding: 0; }
   .hamburger-btn { display: flex; }
@@ -3451,17 +3451,16 @@ body.has-new-panel {
   .mobile-nav-links a { display: block; padding: 18px 0; border-bottom: 1px solid var(--line); font-size: 26px; font-weight: 800; color: var(--text); text-decoration: none; }
   .mobile-nav-links a:hover { color: var(--red); }
   .mobile-nav-close { position: absolute; top: 20px; right: 24px; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: var(--text); cursor: pointer; }
-  .nav-menu-group { gap: clamp(17px, 5vw, 26px); padding-left: 17px; }
-  .main-nav .nav-artist-feature { gap: 4px; padding: 0 22px 5px 0; }
-  .main-nav .nav-artist-feature small { font-size: 7px; letter-spacing: .11em; }
-  .main-nav .nav-artist-feature strong { font-size: 15px; }
-  .main-nav .nav-artist-feature::after { bottom: 4px; font-size: 13px; }
+}
+
+@media (max-width: 760px) {
   .detail-body .breadcrumb { height: auto; }
-  .detail-body .breadcrumb-inner { min-height: 42px; gap: 9px; overflow-x: auto; font-size: 11px; white-space: nowrap; }
+  .detail-body .breadcrumb-inner { min-height: 42px; gap: 9px; font-size: 11px; flex-wrap: wrap; }
+  .detail-body .breadcrumb strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px; }
   .detail-body .product-hero { padding-top: 24px; }
   .detail-body .main-product-blank { height: auto; aspect-ratio: 1 / 1; padding: 28px; }
   .detail-body .main-product-blank img { max-width: 84%; max-height: 84%; }
-  .detail-body .gallery-arrow { top: 50%; transform: translateY(-50%); }
+  .detail-body .gallery-arrow { display: none; }
   .detail-body .thumb-row { gap: 10px; margin-top: 12px; }
   .detail-body .thumb { height: auto; padding: 8px 10px; }
   .detail-body .product-info h2 { font-size: 23px; }
@@ -3473,7 +3472,7 @@ body.has-new-panel {
   .detail-body .buy-controls .wish-btn { grid-area: wish; margin-left: 0; }
   .detail-body .purchase-actions { grid-template-columns: 1.1fr .9fr; }
   .detail-body .product-tabs { padding-top: 50px; }
-  .detail-body .tab-nav { grid-template-columns: repeat(5, minmax(112px, 1fr)); overflow-x: auto; }
+  .detail-body .tab-nav { grid-template-columns: repeat(3, 1fr); overflow-x: visible; }
   .detail-body .track-list { grid-template-columns: 1fr; gap: 42px; padding: 38px 12px; }
   .detail-body .review-meta, .detail-body .review-help { flex-wrap: wrap; }
   .detail-body .recommend-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -3544,17 +3543,16 @@ body.has-new-panel {
   .arrival-row .upcoming-card { display: none; }
   .arrival-row .arrival-card:nth-child(2) { grid-column: 1 / -1; }
   .about-newsletter { grid-template-columns: 1fr; }
-  .site-footer { padding: 20px 0 10px; }
+  .site-footer { padding: 24px 0 12px; }
   .footer-grid { grid-template-columns: repeat(3, 1fr); gap: 20px 12px; }
   .footer-brand { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; }
   .footer-brand p { display: none; }
-  .footer-brand img { width: 80px; }
+  .footer-brand img { width: 90px; }
   .footer-newsletter { grid-column: 1 / -1; display: flex; align-items: center; gap: 8px; }
   .footer-newsletter h3 { display: none; }
   .footer-newsletter input { flex: 1; height: 36px; }
   .footer-newsletter button { flex-shrink: 0; width: auto; padding: 0 14px; height: 36px; }
-  .site-footer h3 { margin-bottom: 6px; font-size: 10px; }
-  .site-footer a { font-size: 11px; margin-bottom: 3px; }
+  .site-footer h3 { margin-bottom: 7px; font-size: 11px; }
   .featured-release { gap: 28px; scroll-margin-top: 168px; margin-top: 54px; padding: 26px 20px; }
   .featured-release-eyebrow { margin-bottom: 22px; }
   .featured-release-artist { margin-bottom: 12px; font-size: 43px; }
